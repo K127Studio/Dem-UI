@@ -161,6 +161,11 @@ export interface UIProviderProps {
   density?: ThemeDensity;
   /** Project-level changes on top of the theme. */
   overrides?: ThemeOverrides;
+  /**
+   * The provider's element is the page: it paints the theme's background and texture. Needed when
+   * the provider sits inside `<body>`, because the tokens live on its element and not above it.
+   */
+  isPage?: boolean;
   /** All the built-in strings, for translations. */
   labels?: Partial<UILabels>;
   /** Router link: `next/link` or the `Link` of `next-intl`. Defaults to `<a>`. */
@@ -172,7 +177,7 @@ export interface UIProviderProps {
 const tokenStyle = (tokens: Record<string, string>) =>
   Object.fromEntries(Object.entries(tokens).map(([name, value]) => [`--ui-${name}`, value])) as CSSProperties;
 
-export function UIProvider({ children, theme, mode, density, overrides, labels, Link, Image }: UIProviderProps) {
+export function UIProvider({ children, theme, mode, density, overrides, isPage = false, labels, Link, Image }: UIProviderProps) {
   const parent = useContext(UIContext);
 
   const value = useMemo<UIContextValue>(() => {
@@ -215,7 +220,7 @@ export function UIProvider({ children, theme, mode, density, overrides, labels, 
   return (
     <UIContext.Provider value={value}>
       {needsScope ? (
-        <div {...value.scope} className="contents font-body text-foreground">
+        <div {...value.scope} className={isPage ? "ui-page min-h-dvh" : "contents font-body text-foreground"}>
           {children}
         </div>
       ) : (

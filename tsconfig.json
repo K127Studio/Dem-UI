@@ -74,6 +74,9 @@
       ],
       "@dem-ui/special-effects/grainient": [
         "./packages/special-effects/src/grainient.tsx"
+      ],
+      "@dem-ui/next": [
+        "./packages/next/src/index.tsx"
       ]
     }
   },

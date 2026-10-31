@@ -24,6 +24,8 @@ const recipes = createRecipes({
       },
     },
   },
+  // The primary is a yellow made for fills: as text on cream it cannot be read.
+  link: { variants: { variant: { default: "font-bold text-foreground decoration-[3px] hover:bg-primary hover:text-on-primary hover:opacity-100" } } },
   input: { slots: { field: `${INK} shadow-control focus:shadow-[6px_6px_0_#000] focus:ring-0 hover:border-black focus:border-black` } },
   select: {
     slots: {
@@ -38,7 +40,18 @@ const recipes = createRecipes({
     slots: { track: `${INK} rounded-none bg-surface box-content`, thumb: "rounded-none bg-black shadow-none" },
     variants: { checked: { true: { track: "bg-secondary" } } },
   },
-  badge: { slots: { root: `${INK} font-bold uppercase` } },
+  // Filled, not tinted: the acid colours cannot be read as text on a pale tint.
+  badge: {
+    slots: { root: `${INK} font-bold uppercase` },
+    variants: {
+      variant: {
+        primary: "bg-primary text-on-primary",
+        success: "bg-success text-on-success",
+        warning: "bg-warning text-on-warning",
+        danger: "bg-danger text-on-danger",
+      },
+    },
+  },
   card: {
     variants: {
       variant: {
@@ -81,7 +94,26 @@ const recipes = createRecipes({
   },
   imageDropzone: { slots: { zone: "rounded-none border-black", zoneActive: "bg-primary" } },
   quote: { slots: { root: `${INK} shadow-card`, iconStart: "text-current", iconEnd: "text-current" } },
-  form: { slots: { card: `${INK} rounded-none shadow-card`, toggleRow: `${INK} rounded-none`, note: `${INK} rounded-none`, sectionIconBox: `${INK} rounded-none bg-accent text-on-accent` } },
+  confirmModal: {
+    variants: {
+      tone: {
+        info: { iconBox: "bg-primary", icon: "text-on-primary" },
+        danger: { iconBox: "bg-danger", icon: "text-on-danger" },
+        warning: { iconBox: "bg-warning", icon: "text-on-warning" },
+        success: { iconBox: "bg-success", icon: "text-on-success" },
+      },
+    },
+  },
+  form: {
+    variants: {
+      noteTone: {
+        info: { note: "bg-primary text-on-primary" },
+        warning: { note: "bg-warning text-on-warning" },
+        danger: { note: "bg-danger text-on-danger" },
+      },
+    },
+    slots: { card: `${INK} rounded-none shadow-card`, toggleRow: `${INK} rounded-none`, note: `${INK} rounded-none`, sectionIconBox: `${INK} rounded-none bg-accent text-on-accent` },
+  },
   simpleHero: { slots: { title: "uppercase" } },
   adminSidebar: { slots: { root: "border-black", logo: "border-black bg-primary text-on-primary", item: "rounded-none font-bold", itemActive: `${INK} bg-accent text-on-accent shadow-control hover:bg-accent` } },
   adminHeader: { slots: { root: "border-black" } },

@@ -1,6 +1,6 @@
 import type { ComponentType, ReactNode } from "react";
 import { Button } from "@dem-ui/base";
-import { GridHero } from "./GridHero";
+import { GridHero, GridHeroPanel } from "./GridHero";
 import { Markdown } from "./Markdown";
 import { Paragraph } from "@dem-ui/base";
 import { ParagraphWithImage } from "./ParagraphWithImage";
@@ -95,7 +95,7 @@ function GridHeroModule({ props, context }: ModuleRenderProps) {
       imageAlt={p.imageAlt}
       imagePosition={p.imagePosition}
     >
-      <GridHero.Panel className={p.topBgColorClassName}>
+      <GridHeroPanel className={p.topBgColorClassName}>
         {p.topTitle && (
           <h2 className={classes("text-4xl font-bold whitespace-pre-line", p.topTitleColorClassName, context.fontClass(p.topTitleFontFamily))}>
             {p.topTitle}
@@ -106,9 +106,9 @@ function GridHeroModule({ props, context }: ModuleRenderProps) {
             {p.topSubtitle}
           </p>
         )}
-      </GridHero.Panel>
+      </GridHeroPanel>
       {(p.bottomParagraph || p.hasButton) && (
-        <GridHero.Panel className={p.bottomBgColorClassName}>
+        <GridHeroPanel className={p.bottomBgColorClassName}>
           {p.bottomParagraph && (
             <p className={classes("whitespace-pre-line", p.bottomParagraphColorClassName, context.fontClass(p.bottomFontFamily))}>
               {p.bottomParagraph}
@@ -121,7 +121,7 @@ function GridHeroModule({ props, context }: ModuleRenderProps) {
               </Button>
             </div>
           )}
-        </GridHero.Panel>
+        </GridHeroPanel>
       )}
     </GridHero>
   );

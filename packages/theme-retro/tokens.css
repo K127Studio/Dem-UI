@@ -1,3 +1,5 @@
+@source "./dist";
+
 @layer dem.theme {
   /* Windows 9x greys over teal. */
   [data-theme~="retro"] {

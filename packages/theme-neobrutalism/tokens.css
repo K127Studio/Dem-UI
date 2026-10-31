@@ -1,3 +1,5 @@
+@source "./dist";
+
 @layer dem.theme {
   [data-theme~="neobrutalism"] {
     --ui-background: #fff8e7;

@@ -131,7 +131,7 @@ export function Select(rawProps: SelectProps) {
   const allOptions = useMemo<SelectOption[]>(() => {
     if (options) return options;
     return Children.toArray(children).flatMap((child) =>
-      isValidElement<OptionProps>(child) && child.type === Option
+      isValidElement<OptionProps>(child) && typeof child.props.value === "string"
         ? [{ ...child.props, label: child.props.children }]
         : [],
     );

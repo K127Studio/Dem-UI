@@ -21,6 +21,7 @@
   "files": [
     "dist",
     "fonts-alternatives.css",
+    "theme.css",
     "tokens.css"
   ],
   "exports": {
@@ -29,7 +30,8 @@
       "import": "./dist/index.js"
     },
     "./tokens.css": "./tokens.css",
-    "./fonts-alternatives.css": "./fonts-alternatives.css"
+    "./fonts-alternatives.css": "./fonts-alternatives.css",
+    "./theme.css": "./theme.css"
   },
   "scripts": {
     "build": "tsup"

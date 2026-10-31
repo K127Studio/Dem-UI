@@ -1,3 +1,5 @@
+@source "./dist";
+
 @layer dem.theme {
   [data-theme~="editorial"] {
     --ui-background: #f5f1e8;

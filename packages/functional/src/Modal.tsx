@@ -102,7 +102,7 @@ export interface ModalHeaderProps {
   classNames?: Partial<Record<"header" | "title" | "close", string>>;
 }
 
-function ModalHeader({ children, hideClose = false, className, classNames }: ModalHeaderProps) {
+export function ModalHeader({ children, hideClose = false, className, classNames }: ModalHeaderProps) {
   const context = useContext(ModalContext);
   const { labels } = useUI();
   const s = useStyles("modal", {}, classNames);
@@ -120,12 +120,12 @@ function ModalHeader({ children, hideClose = false, className, classNames }: Mod
   );
 }
 
-function ModalBody({ children, className }: { children: ReactNode; className?: string }) {
+export function ModalBody({ children, className }: { children: ReactNode; className?: string }) {
   const s = useStyles("modal");
   return <div className={s("body", className)}>{children}</div>;
 }
 
-function ModalFooter({ children, className }: { children: ReactNode; className?: string }) {
+export function ModalFooter({ children, className }: { children: ReactNode; className?: string }) {
   const s = useStyles("modal");
   return <div className={s("footer", className)}>{children}</div>;
 }

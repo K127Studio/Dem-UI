@@ -9,7 +9,7 @@ Themeable React and Tailwind v4 component system. Write the interface once, then
 - **6 themes**: Base, Neobrutalism, Industrial, Editorial, Dark Glass, Retro
 - **Separate modules**: dark mode toggles, WebGL heroes
 
-> Status: early. The packages are not on npm yet (`private: true`) and have only been exercised in Storybook, not in a production app.
+> Status: early. The packages are not on npm yet (`private: true`). They run in Storybook and in the example Next.js app, not yet in a production site.
 
 ## Getting started
 
@@ -27,6 +27,8 @@ Storybook opens on http://localhost:6006 with every component, and a toolbar to 
 | `npm run build-storybook` | Builds the static Storybook |
 | `npm run typecheck` | Checks the types of the whole repository |
 | `npm run check:themes` | Checks every theme's tokens and colour contrast |
+| `npm run example` | Starts the example Next.js app, after `npm run build` |
+| `npm run example:build` | Builds the example Next.js app |
 
 Needs Node 22.12 or newer. With an older global Node, `npm install` silently skips the native bindings of Vite and Storybook and Storybook will not start.
 
@@ -35,6 +37,7 @@ Needs Node 22.12 or newer. With an older global Node, `npm install` silently ski
 | Package | Contents |
 |---|---|
 | `@dem-ui/core` | The wrapper: one install for foundation, base, functional, content and ui |
+| `@dem-ui/next` | `DemProvider`, already wired to `next/link` and `next/image` |
 | `@dem-ui/foundation` | Themes, tokens, `UIProvider`, `useStyles`, icon contract, `cn` |
 | `@dem-ui/base` | The HTML elements as components, plus Button, Input, Select, Switch, Badge, Card |
 | `@dem-ui/functional` | Modal, Tabs, Accordion, ConfirmModal, DeleteButton, DataTable, ImageDropzone, lists and filters, LocaleSwitch, colour pickers |
@@ -68,33 +71,68 @@ Written once, they follow every theme. Text inherits its colour from where it si
 
 Text elements share `size`, `weight`, `align`, `isBold`, `isItalic`, `isUnderline`, `isStrikethrough`, `isUppercase`, `isTruncated`, `isMuted`, `isMono` and `colorClassName`.
 
-## Using a theme
+## Using it with Next.js
+
+```bash
+npm install @dem-ui/next @dem-ui/theme-neobrutalism
+```
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@import "@dem-ui/next/styles.css";
+@import "@dem-ui/theme-neobrutalism/theme.css";
+```
+
+```tsx
+// app/layout.tsx: a Server Component, no "use client" needed
+import { DemProvider } from "@dem-ui/next";
+import neobrutalism from "@dem-ui/theme-neobrutalism";
+import "./globals.css";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <DemProvider theme={neobrutalism}>{children}</DemProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+That is all the wiring: `next/link` and `next/image` are already connected, and `transpilePackages` is not needed. `apps/next-example` is a working app (`npm run build`, then `npm run example`).
+
+With next-intl, pass the `Link` of your own routing once: `<DemProvider theme={theme} Link={Link}>`.
+
+In a Server Component:
+
+- Use `ModalHeader`, `ModalBody`, `ModalFooter` and `GridHeroPanel`: `Modal.Header` cannot be read there.
+- Import `cn` from `@dem-ui/core/utils`. Other helpers such as `selectFonts` belong in client files.
+- Functions cannot cross to the client, so anything with `onClick` or `onChange` goes in a `"use client"` file, as with any React library.
+
+For remote images, add the hosts to `images.remotePatterns` in `next.config`. With `next/font`, skip the theme's fonts and assign the variable: `--ui-font-display: var(--font-abril);`.
+
+## Using it without Next.js
 
 Requires React 19 and Tailwind v4.
 
 ```css
 @import "tailwindcss";
-@import "@dem-ui/core/styles.css";          /* or foundation/styles.css plus each package's styles.css */
-@import "@dem-ui/theme-base/tokens.css";          /* parents first */
-@import "@dem-ui/theme-neobrutalism/tokens.css";
-@import "@dem-ui/theme-neobrutalism/fonts.css";   /* skip it when using next/font */
-
-@source "../node_modules/@dem-ui/theme-neobrutalism/dist";
+@import "@dem-ui/core/styles.css";
+@import "@dem-ui/theme-neobrutalism/theme.css";
 ```
 
 ```tsx
-"use client";
-import Link from "next/link";
-import Image from "next/image";
 import { UIProvider } from "@dem-ui/core";
 import neobrutalism from "@dem-ui/theme-neobrutalism";
 
-<UIProvider theme={neobrutalism} mode="light" density="normal" Link={Link} Image={Image}>
+<UIProvider theme={neobrutalism} isPage Link={RouterLink}>
   {children}
 </UIProvider>;
 ```
 
-A provider holds components (icons, `Link`), so it belongs in a client component. Put the class `ui-page` on `<body>` to get the theme's background, texture and text colour.
+Without `Link` and `Image` it uses `<a>` and `<img>`.
 
 ## Overriding, from weakest to strongest
 

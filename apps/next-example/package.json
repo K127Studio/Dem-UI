@@ -1,0 +1,31 @@
+{
+  "name": "@dem-ui/next-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A real Next.js app using Dem UI from its built packages, Server Components included.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3210",
+    "build:app": "next build",
+    "start": "next start -p 3210"
+  },
+  "dependencies": {
+    "@dem-ui/core": "*",
+    "@dem-ui/next": "*",
+    "@dem-ui/theme-neobrutalism": "*",
+    "@dem-ui/theme-editorial": "*",
+    "@dem-ui/theme-base": "*",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,3 +1,5 @@
+@source "./dist";
+
 /* The class holds the whole token contract. `:where` on the dark rule keeps its weight
    equal to a child theme's light rule, so a child that sets a token keeps it in both modes
    unless it writes a dark rule of its own. */

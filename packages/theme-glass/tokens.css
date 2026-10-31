@@ -1,3 +1,5 @@
+@source "./dist";
+
 /* Dark only: the same values apply whatever data-mode says. */
 @layer dem.theme {
   [data-theme~="glass"] {

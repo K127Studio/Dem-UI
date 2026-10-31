@@ -1,3 +1,5 @@
+@source "./dist";
+
 @layer dem.theme {
   /* Light: anodised aluminium, like a Braun front panel. */
   [data-theme~="industrial"] {

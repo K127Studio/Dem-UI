@@ -24,6 +24,7 @@
     "packages/content",
     "packages/ui",
     "packages/core",
+    "packages/next",
     "packages/flags",
     "packages/icons-lucide",
     "packages/theme-base",
@@ -37,14 +38,17 @@
     "packages/toggle-skeuomorphic",
     "packages/toggles",
     "packages/special-effects",
-    "apps/storybook"
+    "apps/storybook",
+    "apps/next-example"
   ],
   "scripts": {
     "storybook": "npm run storybook -w @dem-ui/storybook",
     "build-storybook": "npm run build-storybook -w @dem-ui/storybook",
     "build": "npm run build --workspaces --if-present",
     "typecheck": "tsc --noEmit",
-    "check:themes": "node scripts/check-themes.mjs"
+    "check:themes": "node scripts/check-themes.mjs",
+    "example": "npm run dev -w @dem-ui/next-example",
+    "example:build": "npm run build:app -w @dem-ui/next-example"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

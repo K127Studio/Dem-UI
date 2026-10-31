@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Paragraph } from "@dem-ui/base";
-import { GridHero, Markdown, ModuleRenderer, ParagraphWithImage, Quote, SimpleHero, Spacer, type ContentModule, type ModuleRenderProps } from "@dem-ui/content";
+import { GridHero, GridHeroPanel, Markdown, ModuleRenderer, ParagraphWithImage, Quote, SimpleHero, Spacer, type ContentModule, type ModuleRenderProps } from "@dem-ui/content";
 import { ModuleListEditor } from "@dem-ui/content/editors";
 import { Button } from "@dem-ui/base";
 import { sampleImage, sampleImageWarm, sampleMarkdown, sampleText } from "./samples";
@@ -109,16 +109,16 @@ export const GridHeroStory: StoryObj<typeof GridHero> = {
   name: "GridHero",
   render: (args) => (
     <GridHero {...args}>
-      <GridHero.Panel className="bg-surface text-foreground">
+      <GridHeroPanel className="bg-surface text-foreground">
         <h2 className="text-4xl font-bold">Top panel</h2>
         <p className="mt-4 text-lg">Panels stack and share the height.</p>
-      </GridHero.Panel>
-      <GridHero.Panel className="bg-surface-muted text-foreground">
+      </GridHeroPanel>
+      <GridHeroPanel className="bg-surface-muted text-foreground">
         <p>Bottom panel.</p>
         <div className="mt-6">
           <Button>Action</Button>
         </div>
-      </GridHero.Panel>
+      </GridHeroPanel>
     </GridHero>
   ),
   args: { imageSrc: sampleImageWarm, imagePosition: "left" },

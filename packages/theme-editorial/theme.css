@@ -1,0 +1,4 @@
+/* Everything one theme needs: its parent, its tokens, its fonts. */
+@import "@dem-ui/theme-base/tokens.css";
+@import "@dem-ui/theme-editorial/tokens.css";
+@import "@dem-ui/theme-editorial/fonts.css";
