@@ -92,7 +92,7 @@ export default defineTheme({
   icons: createLucideIcons({ strokeWidth: 1 }),
   fontOptions,
   fonts: [
-    { family: "Kugile", roles: ["display"] },
+    { family: "Abril Fatface", roles: ["display"] },
     { family: "Source Serif 4 Variable", roles: ["body"] },
     { family: "JetBrains Mono", roles: ["interactive", "mono"] },
   ],

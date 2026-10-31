@@ -144,8 +144,6 @@ Each theme has its own fonts, plus `fontOptions`: 5 primary and 5 secondary alte
 overrides={{ tokens: selectFonts(editorial, { primary: "Playfair Display", secondary: "Lora" }) }}
 ```
 
-The editorial theme's primary font is Kugile. It is not in this repository: place a licensed copy at `packages/theme-editorial/fonts/Kugile_Demo.ttf`. Without it the theme falls back to Fraunces.
-
 ## Modules
 
 A module is an independent package that any theme can use. Toggles share one contract, `ThemeToggleProps`, so they replace each other:
