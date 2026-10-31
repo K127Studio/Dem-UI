@@ -1,0 +1,96 @@
+{
+  "name": "@dem-ui/theme-industrial",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dem UI theme: anodised panels, silk-screened labels, dot-matrix headings.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/theme-industrial"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "fonts-alternatives.css",
+    "fonts.css",
+    "tokens.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css",
+    "./fonts-alternatives.css": "./fonts-alternatives.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "lucide-react": ">=0.544.0",
+    "@fontsource/dm-mono": "^5.0.0",
+    "@fontsource/dotgothic16": "^5.0.0",
+    "@fontsource/fira-code": "^5.0.0",
+    "@fontsource/inconsolata": "^5.0.0",
+    "@fontsource/jetbrains-mono": "^5.0.0",
+    "@fontsource/major-mono-display": "^5.0.0",
+    "@fontsource/michroma": "^5.0.0",
+    "@fontsource/oxanium": "^5.0.0",
+    "@fontsource/roboto-mono": "^5.0.0",
+    "@fontsource/share-tech-mono": "^5.0.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "dependencies": {
+    "@fontsource/doto": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@dem-ui/icons-lucide": "*",
+    "@dem-ui/theme-base": "*"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "@dem-ui/foundation": "*"
+  },
+  "peerDependenciesMeta": {
+    "@fontsource/dm-mono": {
+      "optional": true
+    },
+    "@fontsource/dotgothic16": {
+      "optional": true
+    },
+    "@fontsource/fira-code": {
+      "optional": true
+    },
+    "@fontsource/inconsolata": {
+      "optional": true
+    },
+    "@fontsource/jetbrains-mono": {
+      "optional": true
+    },
+    "@fontsource/major-mono-display": {
+      "optional": true
+    },
+    "@fontsource/michroma": {
+      "optional": true
+    },
+    "@fontsource/oxanium": {
+      "optional": true
+    },
+    "@fontsource/roboto-mono": {
+      "optional": true
+    },
+    "@fontsource/share-tech-mono": {
+      "optional": true
+    }
+  }
+}

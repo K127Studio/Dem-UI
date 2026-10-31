@@ -1,0 +1,91 @@
+{
+  "name": "@dem-ui/theme-base",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dem UI theme: neutral starting point on the Tailwind palette.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/theme-base"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "fonts-alternatives.css",
+    "tokens.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./tokens.css",
+    "./fonts-alternatives.css": "./fonts-alternatives.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "lucide-react": ">=0.544.0",
+    "@fontsource-variable/inter": "^5.0.0",
+    "@fontsource/dm-sans": "^5.0.0",
+    "@fontsource/karla": "^5.0.0",
+    "@fontsource/lora": "^5.0.0",
+    "@fontsource/manrope": "^5.0.0",
+    "@fontsource/nunito": "^5.0.0",
+    "@fontsource/outfit": "^5.0.0",
+    "@fontsource/public-sans": "^5.0.0",
+    "@fontsource/rubik": "^5.0.0",
+    "@fontsource/work-sans": "^5.0.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "dependencies": {
+    "@dem-ui/icons-lucide": "*"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "@dem-ui/foundation": "*"
+  },
+  "peerDependenciesMeta": {
+    "@fontsource-variable/inter": {
+      "optional": true
+    },
+    "@fontsource/dm-sans": {
+      "optional": true
+    },
+    "@fontsource/karla": {
+      "optional": true
+    },
+    "@fontsource/lora": {
+      "optional": true
+    },
+    "@fontsource/manrope": {
+      "optional": true
+    },
+    "@fontsource/nunito": {
+      "optional": true
+    },
+    "@fontsource/outfit": {
+      "optional": true
+    },
+    "@fontsource/public-sans": {
+      "optional": true
+    },
+    "@fontsource/rubik": {
+      "optional": true
+    },
+    "@fontsource/work-sans": {
+      "optional": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "@dem-ui/foundation/styles.css";
+@import "@dem-ui/themes/fonts.css";
+@import "@dem-ui/themes/tokens.css";
+@import "@dem-ui/theme-base/fonts-alternatives.css";
+@import "@dem-ui/theme-neobrutalism/fonts-alternatives.css";
+@import "@dem-ui/theme-industrial/fonts-alternatives.css";
+@import "@dem-ui/theme-editorial/fonts-alternatives.css";
+@import "@dem-ui/theme-glass/fonts-alternatives.css";
+@import "@dem-ui/theme-retro/fonts-alternatives.css";
+@import "@dem-ui/toggles/styles.css";
+
+@source "../src";
+@source "../../../packages/foundation/src";
+@source "../../../packages/base/src";
+@source "../../../packages/functional/src";
+@source "../../../packages/content/src";
+@source "../../../packages/ui/src";
+@source "../../../packages/theme-base/src";
+@source "../../../packages/theme-neobrutalism/src";
+@source "../../../packages/theme-industrial/src";
+@source "../../../packages/theme-editorial/src";
+@source "../../../packages/theme-glass/src";
+@source "../../../packages/theme-retro/src";
+@source "../../../packages/toggle-seventies/src";
+@source "../../../packages/toggle-skeuomorphic/src";
+@source "../../../packages/special-effects/src";

@@ -1,0 +1,49 @@
+{
+  "name": "@dem-ui/ui",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Composed interfaces: admin shell, forms, login.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "styles",
+    "styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@dem-ui/foundation": "*",
+    "@dem-ui/base": "*",
+    "@dem-ui/functional": "*"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

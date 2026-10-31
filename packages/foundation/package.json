@@ -1,0 +1,53 @@
+{
+  "name": "@dem-ui/foundation",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Themes, tokens and helpers every Dem UI package builds on.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "styles",
+    "styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.js"
+    },
+    "./styles.css": "./styles/styles.css",
+    "./tokens": "./styles/tokens.json"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

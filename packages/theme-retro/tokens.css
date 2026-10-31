@@ -1,0 +1,90 @@
+@layer dem.theme {
+  /* Windows 9x greys over teal. */
+  [data-theme~="retro"] {
+    --ui-background: #008a8a;
+    --ui-surface: #c0c0c0;
+    --ui-surface-muted: #d4d0c8;
+    --ui-foreground: #000000;
+    --ui-foreground-muted: #303030;
+    --ui-border: #808080;
+    --ui-border-strong: #000000;
+    --ui-focus: #000080;
+    --ui-overlay: rgb(0 0 0 / 0.35);
+
+    --ui-primary: #000080;
+    --ui-on-primary: #ffffff;
+    --ui-secondary: #c0c0c0;
+    --ui-on-secondary: #000000;
+    --ui-accent: #ffff00;
+    --ui-on-accent: #000000;
+    --ui-danger: #a80000;
+    --ui-on-danger: #ffffff;
+    --ui-success: #006400;
+    --ui-on-success: #ffffff;
+    --ui-warning: #ffcc00;
+    --ui-on-warning: #000000;
+
+    --ui-radius-control: 0;
+    --ui-radius-card: 0;
+    --ui-radius-modal: 0;
+    --ui-radius-badge: 0;
+
+    /* The classic raised bevel: light top-left, dark bottom-right, in two steps. */
+    --ui-shadow-control: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+    --ui-shadow-card: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+    --ui-shadow-modal: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf, 4px 4px 0 rgb(0 0 0 / 0.5);
+
+    --ui-font-display: "Pixelify Sans", "VT323", monospace;
+    --ui-font-body: "VT323", "Courier New", monospace;
+    --ui-font-interactive: "VT323", "Courier New", monospace;
+    --ui-font-mono: "VT323", "Courier New", monospace;
+
+    --ui-heading-weight: 700;
+    --ui-heading-tracking: 0;
+    --ui-button-weight: 400;
+    --ui-button-tracking: 0.02em;
+    --ui-button-transform: none;
+
+    --ui-border-width: 0px;
+    --ui-control-sm: 1.625rem;
+    --ui-control-md: 1.875rem;
+    --ui-control-lg: 2.25rem;
+    --ui-duration: 0ms;
+    --ui-ease: linear;
+
+    /* 2x2 dither over the desktop colour */
+    --ui-page-image: conic-gradient(rgb(0 0 0 / 0.14) 25%, transparent 0 50%, rgb(0 0 0 / 0.14) 0 75%, transparent 0);
+    --ui-page-image-size: 4px 4px;
+
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' shape-rendering='crispEdges'%3E%3Cpath fill='%23000' d='M2 2h2v2h2v2h2v2h2v2h2v2h2v2h-4v2h2v2h2v2h-4v-2h-2v-2h-2v2h-2z'/%3E%3Cpath fill='%23fff' d='M4 6h2v2h2v2h2v2h2v2h-4v2h-2v-2h-2z'/%3E%3C/svg%3E") 2 2, auto;
+  }
+
+  /* Dark: a phosphor terminal. */
+  [data-theme~="retro"][data-mode="dark"] {
+    --ui-background: #001100;
+    --ui-surface: #002200;
+    --ui-surface-muted: #003300;
+    --ui-foreground: #33ff66;
+    --ui-foreground-muted: #22bb44;
+    --ui-border: #33ff66;
+    --ui-border-strong: #33ff66;
+    --ui-focus: #ccffcc;
+    --ui-primary: #33ff66;
+    --ui-on-primary: #001100;
+    --ui-secondary: #003300;
+    --ui-on-secondary: #33ff66;
+    --ui-accent: #ffb000;
+    --ui-on-accent: #001100;
+    --ui-danger: #ff5555;
+    --ui-on-danger: #001100;
+    --ui-success: #33ff66;
+    --ui-on-success: #001100;
+    --ui-warning: #ffb000;
+    --ui-on-warning: #001100;
+    --ui-shadow-control: inset 0 0 0 1px #33ff66;
+    --ui-shadow-card: inset 0 0 0 1px #33ff66;
+    --ui-shadow-modal: inset 0 0 0 2px #33ff66, 0 0 24px rgb(51 255 102 / 0.35);
+    --ui-page-image: repeating-linear-gradient(0deg, rgb(51 255 102 / 0.05) 0 1px, transparent 1px 3px);
+    --ui-page-image-size: auto;
+  }
+}

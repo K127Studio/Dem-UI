@@ -1,0 +1,14 @@
+/* The alternative fonts of this theme. Optional: import it only when offering a choice,
+   and install the @fontsource packages you keep. */
+@import "@fontsource/press-start-2p/400.css";
+@import "@fontsource/silkscreen/400.css";
+@import "@fontsource/silkscreen/700.css";
+@import "@fontsource/jersey-10/400.css";
+@import "@fontsource/tiny5/400.css";
+@import "@fontsource/micro-5/400.css";
+@import "@fontsource/courier-prime/400.css";
+@import "@fontsource/ubuntu-mono/400.css";
+@import "@fontsource/inconsolata/400.css";
+@import "@fontsource/inconsolata/500.css";
+@import "@fontsource/dotgothic16/400.css";
+@import "@fontsource/share-tech-mono/400.css";

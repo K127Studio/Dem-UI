@@ -1,0 +1,52 @@
+import { Children, isValidElement, type ReactNode } from "react";
+import { useStyles, useUI } from "@dem-ui/foundation";
+
+type GridHeroSlots = "root" | "media" | "image" | "content" | "panel";
+
+function GridHeroPanel({ children, className }: { children?: ReactNode; className?: string }) {
+  const s = useStyles<GridHeroSlots>("gridHero");
+  return <div className={s("panel", className)}>{children}</div>;
+}
+
+export interface GridHeroProps {
+  imageSrc?: string;
+  imageAlt?: string;
+  imagePosition?: "left" | "right";
+  /** One or more stacked panels. Anything that is not a `GridHero.Panel` gets wrapped in one. */
+  children?: ReactNode;
+  className?: string;
+  classNames?: Partial<Record<GridHeroSlots, string>>;
+}
+
+export function GridHero({ imageSrc, imageAlt = "", imagePosition = "left", children, className, classNames }: GridHeroProps) {
+  const { Image } = useUI();
+  const hasImage = Boolean(imageSrc);
+  const s = useStyles<GridHeroSlots>("gridHero", { imagePosition, hasImage }, classNames);
+  return (
+    <section className={s("root", className)}>
+      {hasImage && (
+        <div className={s("media")}>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className={s("image")}
+          />
+        </div>
+      )}
+      <div className={s("content")}>
+        {Children.toArray(children).map((child, index) =>
+          isValidElement(child) && child.type === GridHeroPanel ? (
+            child
+          ) : (
+            <GridHeroPanel key={index}>{child}</GridHeroPanel>
+          ),
+        )}
+      </div>
+    </section>
+  );
+}
+
+GridHero.Panel = GridHeroPanel;

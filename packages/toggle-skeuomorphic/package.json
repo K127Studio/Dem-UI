@@ -1,0 +1,43 @@
+{
+  "name": "@dem-ui/toggle-skeuomorphic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skeuomorphic and neumorphic dark mode switch and push button.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/toggle-skeuomorphic"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "@dem-ui/foundation": "*"
+  }
+}

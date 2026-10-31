@@ -1,0 +1,61 @@
+@layer dem.theme {
+  [data-theme~="neobrutalism"] {
+    --ui-background: #fff8e7;
+    --ui-surface: #ffffff;
+    --ui-surface-muted: #ffe9b0;
+    --ui-foreground: #000000;
+    --ui-foreground-muted: #333333;
+    --ui-border: #000000;
+    --ui-border-strong: #000000;
+    --ui-focus: #2d5bff;
+    --ui-overlay: rgb(0 0 0 / 0.6);
+
+    --ui-primary: #ffe500;
+    --ui-on-primary: #000000;
+    --ui-secondary: #b8ff5c;
+    --ui-on-secondary: #000000;
+    --ui-accent: #c9a7ff;
+    --ui-on-accent: #000000;
+    --ui-danger: #ff5c5c;
+    --ui-on-danger: #000000;
+    --ui-success: #3df2a0;
+    --ui-on-success: #000000;
+    --ui-warning: #ff9f1c;
+    --ui-on-warning: #000000;
+
+    --ui-radius-control: 0;
+    --ui-radius-card: 0;
+    --ui-radius-modal: 0;
+    --ui-radius-badge: 0;
+
+    --ui-shadow-control: 4px 4px 0 #000000;
+    --ui-shadow-card: 6px 6px 0 #000000;
+    --ui-shadow-modal: 10px 10px 0 #000000;
+
+    --ui-font-display: "Space Grotesk", ui-sans-serif, sans-serif;
+    --ui-font-body: "Space Grotesk", ui-sans-serif, sans-serif;
+    --ui-font-interactive: "Space Mono", ui-monospace, monospace;
+    --ui-font-mono: "Space Mono", ui-monospace, monospace;
+
+    --ui-heading-weight: 700;
+    --ui-heading-tracking: -0.02em;
+    --ui-button-weight: 700;
+    --ui-button-tracking: 0;
+    --ui-button-transform: uppercase;
+
+    --ui-border-width: 3px;
+    --ui-duration: 90ms;
+    --ui-ease: linear;
+  }
+
+  [data-theme~="neobrutalism"][data-mode="dark"] {
+    --ui-background: #17153b;
+    --ui-surface: #2a2766;
+    --ui-surface-muted: #3a3690;
+    --ui-foreground: #ffffff;
+    --ui-foreground-muted: #d8d6ff;
+    --ui-border: #000000;
+    --ui-border-strong: #000000;
+    --ui-focus: #ffe500;
+  }
+}

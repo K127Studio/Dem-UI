@@ -1,0 +1,27 @@
+@source "./dist";
+
+/* Micro-square grid of a plastic reflector */
+.dem-seventies-lens {
+  background-image:
+    linear-gradient(90deg, rgb(0 0 0 / 0.45) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(0 0 0 / 0.45) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Warm, dense glow while the bulb is on */
+.dem-seventies-gem-on {
+  box-shadow:
+    inset 0 2px 4px rgb(255 255 255 / 0.7),
+    inset 0 -4px 6px rgb(0 0 0 / 0.6),
+    0 0 4px rgb(0 0 0 / 0.8),
+    0 0 16px #ff7700,
+    0 0 32px rgb(255 119 0 / 0.5);
+}
+
+/* Off: the gem loses intensity and keeps its physical depth */
+.dem-seventies-gem-off {
+  box-shadow:
+    inset 0 1px 2px rgb(255 255 255 / 0.15),
+    inset 0 -4px 6px rgb(0 0 0 / 0.8),
+    0 2px 4px rgb(0 0 0 / 0.5);
+}

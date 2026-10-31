@@ -1,0 +1,79 @@
+/*
+ * The bridge between Tailwind and the themes: classes such as `bg-primary` read `--ui-primary`,
+ * and a theme only has to set the `--ui-*` values. Import it after `tailwindcss`.
+ */
+@source "../dist";
+/* Classes written by the colour pickers, stored in a database, invisible to the scanner. */
+@source inline("{,dark:}{text,bg,from,via,to}-{primary,secondary,accent,foreground,background,black,white,neutral-500,red-500,amber-500,green-500,blue-500,violet-500}{,/{10,20,30,40,50,60,70,80,90,100}}");
+@source inline("{,dark:}bg-linear-to-{t,tr,r,br,b,bl,l,tl}");
+@source inline("dark:bg-none");
+
+/* Layer order, not specificity, decides between them: density has to beat the theme. */
+@layer dem.theme, dem.density, dem.page;
+
+/* `dark:` follows the provider's mode, not the operating system: stored classes use it too. */
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+@theme inline {
+  --color-background: var(--ui-background);
+  --color-surface: var(--ui-surface);
+  --color-surface-muted: var(--ui-surface-muted);
+  --color-foreground: var(--ui-foreground);
+  --color-foreground-muted: var(--ui-foreground-muted);
+  --color-border: var(--ui-border);
+  --color-border-strong: var(--ui-border-strong);
+  --color-focus: var(--ui-focus);
+  --color-overlay: var(--ui-overlay);
+
+  --color-primary: var(--ui-primary);
+  --color-on-primary: var(--ui-on-primary);
+  --color-secondary: var(--ui-secondary);
+  --color-on-secondary: var(--ui-on-secondary);
+  --color-accent: var(--ui-accent);
+  --color-on-accent: var(--ui-on-accent);
+  --color-danger: var(--ui-danger);
+  --color-on-danger: var(--ui-on-danger);
+  --color-success: var(--ui-success);
+  --color-on-success: var(--ui-on-success);
+  --color-warning: var(--ui-warning);
+  --color-on-warning: var(--ui-on-warning);
+
+  --radius-control: var(--ui-radius-control);
+  --radius-card: var(--ui-radius-card);
+  --radius-modal: var(--ui-radius-modal);
+  --radius-badge: var(--ui-radius-badge);
+
+  --shadow-control: var(--ui-shadow-control);
+  --shadow-card: var(--ui-shadow-card);
+  --shadow-modal: var(--ui-shadow-modal);
+
+  --font-display: var(--ui-font-display);
+  --font-body: var(--ui-font-body);
+  --font-interactive: var(--ui-font-interactive);
+  --font-mono: var(--ui-font-mono);
+}
+
+/* Density is independent of the theme. */
+@layer dem.density {
+  [data-density="compact"] {
+    --ui-control-sm: 1.75rem;
+    --ui-control-md: 2rem;
+    --ui-control-lg: 2.5rem;
+  }
+  [data-density="comfortable"] {
+    --ui-control-sm: 2.5rem;
+    --ui-control-md: 3rem;
+    --ui-control-lg: 3.5rem;
+  }
+}
+
+/* The page behind the components: background colour plus the theme's texture or gradient. */
+@layer dem.page {
+  .ui-page {
+    background-color: var(--ui-background);
+    background-image: var(--ui-page-image, none);
+    background-size: var(--ui-page-image-size, auto);
+    color: var(--ui-foreground);
+    font-family: var(--ui-font-body);
+  }
+}

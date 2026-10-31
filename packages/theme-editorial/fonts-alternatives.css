@@ -1,0 +1,19 @@
+/* The alternative fonts of this theme. Optional: import it only when offering a choice,
+   and install the @fontsource packages you keep. */
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/dm-serif-display/400.css";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/bodoni-moda/400.css";
+@import "@fontsource/bodoni-moda/700.css";
+@import "@fontsource/newsreader/400.css";
+@import "@fontsource/newsreader/500.css";
+@import "@fontsource/eb-garamond/400.css";
+@import "@fontsource/eb-garamond/500.css";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";
+@import "@fontsource/libre-baskerville/400.css";
+@import "@fontsource/libre-baskerville/500.css";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";

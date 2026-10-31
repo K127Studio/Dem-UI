@@ -1,0 +1,43 @@
+{
+  "name": "@dem-ui/icons-lucide",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lucide icon set for Dem UI, with a stroke each theme can change.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/icons-lucide"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "lucide-react": ">=0.544.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "lucide-react": "^1.24.0",
+    "@dem-ui/foundation": "*"
+  }
+}

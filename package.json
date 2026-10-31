@@ -1,0 +1,56 @@
+{
+  "name": "dem-ui-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Themeable React and Tailwind v4 component system: HTML elements, functional components, blog content modules, admin UI, themes and special effects.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "packages/foundation",
+    "packages/base",
+    "packages/functional",
+    "packages/content",
+    "packages/ui",
+    "packages/core",
+    "packages/flags",
+    "packages/icons-lucide",
+    "packages/theme-base",
+    "packages/theme-neobrutalism",
+    "packages/theme-industrial",
+    "packages/theme-editorial",
+    "packages/theme-glass",
+    "packages/theme-retro",
+    "packages/themes",
+    "packages/toggle-seventies",
+    "packages/toggle-skeuomorphic",
+    "packages/toggles",
+    "packages/special-effects",
+    "apps/storybook"
+  ],
+  "scripts": {
+    "storybook": "npm run storybook -w @dem-ui/storybook",
+    "build-storybook": "npm run build-storybook -w @dem-ui/storybook",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "tsc --noEmit",
+    "check:themes": "node scripts/check-themes.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "node": "^22.14.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.0"
+  }
+}

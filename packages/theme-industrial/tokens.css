@@ -1,0 +1,82 @@
+@layer dem.theme {
+  /* Light: anodised aluminium, like a Braun front panel. */
+  [data-theme~="industrial"] {
+    --ui-background: #d9d9d4;
+    --ui-surface: #e8e8e3;
+    --ui-surface-muted: #cfcfc9;
+    --ui-foreground: #1a1a18;
+    --ui-foreground-muted: #4d4d48;
+    --ui-border: #a8a8a1;
+    --ui-border-strong: #6e6e68;
+    --ui-focus: #ff5a00;
+    --ui-overlay: rgb(20 20 18 / 0.55);
+
+    --ui-primary: #ff5a00;
+    --ui-on-primary: #000000;
+    --ui-secondary: #2a2a27;
+    --ui-on-secondary: #e8e8e3;
+    --ui-accent: #f2c200;
+    --ui-on-accent: #000000;
+    --ui-danger: #d11f1f;
+    --ui-on-danger: #ffffff;
+    --ui-success: #1f7a3a;
+    --ui-on-success: #ffffff;
+    --ui-warning: #f2c200;
+    --ui-on-warning: #000000;
+
+    --ui-radius-control: 3px;
+    --ui-radius-card: 6px;
+    --ui-radius-modal: 8px;
+    --ui-radius-badge: 2px;
+
+    --ui-shadow-control: inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -1px 0 rgb(0 0 0 / 0.25), 0 1px 2px rgb(0 0 0 / 0.3);
+    --ui-shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 1px 3px rgb(0 0 0 / 0.25);
+    --ui-shadow-modal: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 20px 40px rgb(0 0 0 / 0.4);
+
+    --ui-font-display: "Doto", "IBM Plex Mono", monospace;
+    --ui-font-body: "IBM Plex Mono", ui-monospace, monospace;
+    --ui-font-interactive: "IBM Plex Mono", ui-monospace, monospace;
+    --ui-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    --ui-heading-weight: 700;
+    --ui-heading-tracking: 0.04em;
+    --ui-button-weight: 500;
+    --ui-button-tracking: 0.12em;
+    --ui-button-transform: uppercase;
+
+    --ui-control-sm: 2rem;
+    --ui-control-md: 2.25rem;
+    --ui-control-lg: 2.75rem;
+    --ui-duration: 80ms;
+    --ui-ease: steps(3);
+
+    /* Millimetre grid */
+    --ui-page-image:
+      linear-gradient(rgb(0 0 0 / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(0 0 0 / 0.08) 1px, transparent 1px);
+    --ui-page-image-size: 8px 8px;
+  }
+
+  /* Dark: black polycarbonate with an amber OLED feel. */
+  [data-theme~="industrial"][data-mode="dark"] {
+    --ui-background: #0c0c0b;
+    --ui-surface: #161614;
+    --ui-surface-muted: #23231f;
+    --ui-foreground: #f0efe6;
+    --ui-foreground-muted: #a5a498;
+    --ui-border: #33332e;
+    --ui-border-strong: #5a5a52;
+    --ui-secondary: #2f2f2a;
+    --ui-on-secondary: #f0efe6;
+    --ui-danger: #ff4d4d;
+    --ui-on-danger: #000000;
+    --ui-success: #39d353;
+    --ui-on-success: #000000;
+    --ui-shadow-control: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.8);
+    --ui-shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 1px 3px rgb(0 0 0 / 0.8);
+    --ui-shadow-modal: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 20px 40px rgb(0 0 0 / 0.8);
+    --ui-page-image:
+      radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px);
+    --ui-page-image-size: 8px 8px;
+  }
+}

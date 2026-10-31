@@ -1,0 +1,96 @@
+{
+  "name": "@dem-ui/theme-neobrutalism",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dem UI theme: thick black borders, hard shadows, acid colours, buttons that press.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/theme-neobrutalism"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "fonts-alternatives.css",
+    "fonts.css",
+    "tokens.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css",
+    "./fonts-alternatives.css": "./fonts-alternatives.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "lucide-react": ">=0.544.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.0.0",
+    "@fontsource/archivo-black": "^5.0.0",
+    "@fontsource/dm-sans": "^5.0.0",
+    "@fontsource/lexend-mega": "^5.0.0",
+    "@fontsource/outfit": "^5.0.0",
+    "@fontsource/public-sans": "^5.0.0",
+    "@fontsource/rubik": "^5.0.0",
+    "@fontsource/syne": "^5.0.0",
+    "@fontsource/unbounded": "^5.0.0",
+    "@fontsource/work-sans": "^5.0.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "dependencies": {
+    "@fontsource/space-grotesk": "^5.3.0",
+    "@fontsource/space-mono": "^5.3.0",
+    "@dem-ui/icons-lucide": "*",
+    "@dem-ui/theme-base": "*"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "@dem-ui/foundation": "*"
+  },
+  "peerDependenciesMeta": {
+    "@fontsource-variable/bricolage-grotesque": {
+      "optional": true
+    },
+    "@fontsource/archivo-black": {
+      "optional": true
+    },
+    "@fontsource/dm-sans": {
+      "optional": true
+    },
+    "@fontsource/lexend-mega": {
+      "optional": true
+    },
+    "@fontsource/outfit": {
+      "optional": true
+    },
+    "@fontsource/public-sans": {
+      "optional": true
+    },
+    "@fontsource/rubik": {
+      "optional": true
+    },
+    "@fontsource/syne": {
+      "optional": true
+    },
+    "@fontsource/unbounded": {
+      "optional": true
+    },
+    "@fontsource/work-sans": {
+      "optional": true
+    }
+  }
+}

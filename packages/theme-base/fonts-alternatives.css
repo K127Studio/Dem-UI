@@ -1,0 +1,21 @@
+/* The alternative fonts of this theme. Optional: import it only when offering a choice,
+   and install the @fontsource packages you keep. */
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/public-sans/400.css";
+@import "@fontsource/public-sans/700.css";
+@import "@fontsource/outfit/400.css";
+@import "@fontsource/outfit/700.css";
+@import "@fontsource/work-sans/400.css";
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/karla/400.css";
+@import "@fontsource/karla/500.css";
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/500.css";
+@import "@fontsource/rubik/400.css";
+@import "@fontsource/rubik/500.css";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";

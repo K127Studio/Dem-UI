@@ -1,0 +1,20 @@
+/* The alternative fonts of this theme. Optional: import it only when offering a choice,
+   and install the @fontsource packages you keep. */
+@import "@fontsource/archivo-black/400.css";
+@import "@fontsource-variable/bricolage-grotesque/index.css";
+@import "@fontsource/syne/400.css";
+@import "@fontsource/syne/700.css";
+@import "@fontsource/unbounded/400.css";
+@import "@fontsource/unbounded/700.css";
+@import "@fontsource/lexend-mega/400.css";
+@import "@fontsource/lexend-mega/700.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/work-sans/400.css";
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/outfit/400.css";
+@import "@fontsource/outfit/500.css";
+@import "@fontsource/public-sans/400.css";
+@import "@fontsource/public-sans/500.css";
+@import "@fontsource/rubik/400.css";
+@import "@fontsource/rubik/500.css";

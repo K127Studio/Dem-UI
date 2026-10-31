@@ -1,0 +1,72 @@
+@layer dem.theme {
+  [data-theme~="editorial"] {
+    --ui-background: #f5f1e8;
+    --ui-surface: #f5f1e8;
+    --ui-surface-muted: #e9e3d4;
+    --ui-foreground: #14120f;
+    --ui-foreground-muted: #5c564b;
+    --ui-border: #14120f;
+    --ui-border-strong: #14120f;
+    --ui-focus: #b3261e;
+    --ui-overlay: rgb(20 18 15 / 0.75);
+
+    --ui-primary: #14120f;
+    --ui-on-primary: #f5f1e8;
+    --ui-secondary: #e9e3d4;
+    --ui-on-secondary: #14120f;
+    --ui-accent: #b3261e;
+    --ui-on-accent: #f5f1e8;
+    --ui-danger: #b3261e;
+    --ui-on-danger: #f5f1e8;
+    --ui-success: #2b5d3a;
+    --ui-on-success: #f5f1e8;
+    --ui-warning: #8a5a00;
+    --ui-on-warning: #f5f1e8;
+
+    --ui-radius-control: 0;
+    --ui-radius-card: 0;
+    --ui-radius-modal: 0;
+    --ui-radius-badge: 0;
+
+    --ui-shadow-control: none;
+    --ui-shadow-card: none;
+    --ui-shadow-modal: none;
+
+    --ui-font-display: "Kugile", "Fraunces Variable", Georgia, serif;
+    --ui-font-body: "Source Serif 4 Variable", Georgia, serif;
+    --ui-font-interactive: "JetBrains Mono", ui-monospace, monospace;
+    --ui-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --ui-heading-weight: 400;
+    --ui-heading-tracking: -0.035em;
+    --ui-button-weight: 400;
+    --ui-button-tracking: 0.14em;
+    --ui-button-transform: uppercase;
+
+    --ui-duration: 400ms;
+    --ui-ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+  }
+
+  [data-theme~="editorial"][data-mode="dark"] {
+    --ui-background: #14120f;
+    --ui-surface: #14120f;
+    --ui-surface-muted: #24211b;
+    --ui-foreground: #f5f1e8;
+    --ui-foreground-muted: #a89f8f;
+    --ui-border: #f5f1e8;
+    --ui-border-strong: #f5f1e8;
+    --ui-focus: #ff8a7a;
+    --ui-primary: #f5f1e8;
+    --ui-on-primary: #14120f;
+    --ui-secondary: #24211b;
+    --ui-on-secondary: #f5f1e8;
+    --ui-accent: #ff8a7a;
+    --ui-on-accent: #14120f;
+    --ui-danger: #ff8a7a;
+    --ui-on-danger: #14120f;
+    --ui-success: #8fce9f;
+    --ui-on-success: #14120f;
+    --ui-warning: #e0b050;
+    --ui-on-warning: #14120f;
+  }
+}

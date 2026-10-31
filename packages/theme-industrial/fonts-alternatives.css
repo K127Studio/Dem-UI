@@ -1,0 +1,18 @@
+/* The alternative fonts of this theme. Optional: import it only when offering a choice,
+   and install the @fontsource packages you keep. */
+@import "@fontsource/dotgothic16/400.css";
+@import "@fontsource/major-mono-display/400.css";
+@import "@fontsource/michroma/400.css";
+@import "@fontsource/oxanium/400.css";
+@import "@fontsource/oxanium/700.css";
+@import "@fontsource/share-tech-mono/400.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/roboto-mono/400.css";
+@import "@fontsource/roboto-mono/500.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+@import "@fontsource/inconsolata/400.css";
+@import "@fontsource/inconsolata/500.css";
+@import "@fontsource/fira-code/400.css";
+@import "@fontsource/fira-code/500.css";

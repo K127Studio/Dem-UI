@@ -1,0 +1,57 @@
+/* Dark only: the same values apply whatever data-mode says. */
+@layer dem.theme {
+  [data-theme~="glass"] {
+    --ui-background: #0a0a0a;
+    --ui-surface: #141416;
+    --ui-surface-muted: #1f1f23;
+    --ui-foreground: #f4f4f5;
+    --ui-foreground-muted: #a1a1aa;
+    --ui-border: rgb(255 255 255 / 0.08);
+    --ui-border-strong: rgb(255 255 255 / 0.18);
+    --ui-focus: #8b8cf8;
+    --ui-overlay: rgb(0 0 0 / 0.6);
+
+    --ui-primary: #f4f4f5;
+    --ui-on-primary: #0a0a0a;
+    --ui-secondary: #27272a;
+    --ui-on-secondary: #f4f4f5;
+    --ui-accent: #8b8cf8;
+    --ui-on-accent: #0a0a0a;
+    --ui-danger: #f87171;
+    --ui-on-danger: #0a0a0a;
+    --ui-success: #4ade80;
+    --ui-on-success: #0a0a0a;
+    --ui-warning: #fbbf24;
+    --ui-on-warning: #0a0a0a;
+
+    --ui-radius-control: 0.5rem;
+    --ui-radius-card: 0.875rem;
+    --ui-radius-modal: 1rem;
+    --ui-radius-badge: 9999px;
+
+    /* The top inset line is the micro-reflection on the upper edge of a box. */
+    --ui-shadow-control: inset 0 1px 0 rgb(255 255 255 / 0.1);
+    --ui-shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 8px 24px rgb(0 0 0 / 0.4);
+    --ui-shadow-modal: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 24px 80px rgb(0 0 0 / 0.7);
+
+    --ui-font-display: "Inter Variable", ui-sans-serif, sans-serif;
+    --ui-font-body: "Inter Variable", ui-sans-serif, sans-serif;
+    --ui-font-interactive: "Inter Variable", ui-sans-serif, sans-serif;
+    --ui-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --ui-heading-weight: 600;
+    --ui-heading-tracking: -0.025em;
+    --ui-button-weight: 500;
+    --ui-button-tracking: -0.005em;
+    --ui-button-transform: none;
+
+    --ui-duration: 150ms;
+    --ui-ease: cubic-bezier(0.2, 0, 0, 1);
+
+    /* Mesh gradient: blurred light placed behind the page. */
+    --ui-page-image:
+      radial-gradient(50rem 30rem at 15% -5%, rgb(99 102 241 / 0.22), transparent 70%),
+      radial-gradient(40rem 26rem at 90% 5%, rgb(236 72 153 / 0.12), transparent 70%),
+      radial-gradient(50rem 30rem at 50% 110%, rgb(14 165 233 / 0.1), transparent 70%);
+  }
+}

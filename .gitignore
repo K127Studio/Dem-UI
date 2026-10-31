@@ -1,0 +1,7 @@
+node_modules
+dist
+storybook-static
+*.log
+
+# Demo cut with an unverified licence: not redistributed. See the README.
+packages/theme-editorial/fonts/

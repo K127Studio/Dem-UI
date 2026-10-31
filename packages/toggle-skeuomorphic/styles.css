@@ -1,0 +1,172 @@
+/* Ported from the Hanuman Beverages switch. Sizes are in em: `size` sets the font size. */
+.dem-toggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  appearance: none;
+}
+.dem-toggle:focus-visible {
+  outline: 2px solid var(--ui-focus, currentColor);
+  outline-offset: 0.5em;
+}
+
+.dem-toggle-switch {
+  display: block;
+  position: relative;
+  width: 16em;
+  height: 7em;
+  border-radius: 3.5em;
+  transition: box-shadow 300ms ease-out 0s, background-color 300ms ease-out 0s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dem-toggle-switch::before,
+.dem-toggle-switch::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 50;
+  top: 0.25em;
+  left: 0.25em;
+  width: 6.5em;
+  height: 6.5em;
+  border-radius: 3.5em;
+  transition: left 300ms ease-out 0s, background-color 300ms ease-out 0s,
+    box-shadow 300ms ease-out 0s, opacity 300ms ease-out 0s;
+}
+
+.dem-toggle-switch::after {
+  opacity: 0.4;
+}
+
+.dem-toggle-on::before,
+.dem-toggle-on::after {
+  left: 9.25em;
+}
+
+.dem-toggle-on::after {
+  opacity: 0.8;
+}
+
+/* SKEUOMORPHISM */
+.dem-toggle-skeuomorphism {
+  box-shadow: inset 0 0 7em 7em rgba(0, 0, 0, 0.3),
+    inset 0 0.8em 0.4em rgba(0, 0, 0, 0.3),
+    inset 0 3em 1em rgba(0, 0, 0, 0.25),
+    0 -0.25em 0.25em rgba(0, 0, 0, 0.2),
+    0 0.25em 0.25em rgba(255, 255, 255, 0.08);
+}
+
+.dem-toggle-skeuomorphism::before {
+  background-color: #273345;
+  box-shadow: inset 0 0.25em 0.25em rgba(255, 255, 255, 0.08),
+    inset 0 -0.25em 0.25em rgba(0, 0, 0, 0.2),
+    0 0.6em 0.4em rgba(0, 0, 0, 0.5),
+    0 1.25em 1em rgba(0, 0, 0, 0.5);
+}
+
+/* SKEUOMORPHISM CHECKED */
+.dem-toggle-skeuomorphism.dem-toggle-on {
+  box-shadow: inset 0 0 7em 7em rgba(0, 0, 0, 0.1),
+    inset 0 0.8em 0.4em rgba(0, 0, 0, 0.2),
+    inset 0 3em 1em rgba(0, 0, 0, 0.1),
+    0 -0.25em 0.25em rgba(0, 0, 0, 0.15),
+    0 0.25em 0.25em rgba(255, 255, 255, 0.4);
+}
+
+.dem-toggle-skeuomorphism.dem-toggle-on::before {
+  background-color: #c9c3b8;
+  box-shadow: inset 0 0.25em 0.25em rgba(255, 255, 255, 0.4),
+    inset 0 -0.25em 0.25em rgba(0, 0, 0, 0.15),
+    0 0.6em 0.4em rgba(0, 0, 0, 0.08),
+    0 1.25em 1em rgba(0, 0, 0, 0.08);
+}
+
+/* NEUMORPHISM: no parts of its own, the groove and the knob are moulded out of the surface. */
+.dem-toggle-switch.dem-toggle-neumorphism {
+  box-shadow:
+    inset 0.35em 0.35em 0.8em rgba(0, 0, 0, 0.45),
+    inset -0.35em -0.35em 0.8em rgba(255, 255, 255, 0.05);
+}
+
+.dem-toggle-neumorphism::before {
+  background-color: var(--dem-toggle-surface);
+  box-shadow:
+    -0.35em -0.35em 0.9em 0.2em rgba(255, 255, 255, 0.04),
+    0.5em 0.5em 1em 0.2em rgba(0, 0, 0, 0.4),
+    inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.04),
+    inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.4);
+}
+
+.dem-toggle-neumorphism::after {
+  opacity: 0;
+}
+
+/* NEUMORPHISM CHECKED */
+.dem-toggle-switch.dem-toggle-neumorphism.dem-toggle-on {
+  box-shadow:
+    inset 0.35em 0.35em 0.8em rgba(0, 0, 0, 0.2),
+    inset -0.35em -0.35em 0.8em rgba(255, 255, 255, 0.4);
+}
+
+.dem-toggle-neumorphism.dem-toggle-on::before {
+  box-shadow:
+    -0.35em -0.35em 0.9em 0.2em rgba(255, 255, 255, 0.32),
+    0.5em 0.5em 1em 0.2em rgba(0, 0, 0, 0.2),
+    inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.32),
+    inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
+}
+
+/* PUSH BUTTON VARIANT FOR MOBILE */
+.dem-toggle-push {
+  display: block;
+  position: relative;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* SKEUOMORPHISM OFF (popped out) */
+.dem-toggle-push.dem-toggle-skeuomorphism {
+  box-shadow: inset 0 0.25em 0.25em rgba(255, 255, 255, 0.2),
+    inset 0 -0.25em 0.25em rgba(0, 0, 0, 0.4),
+    0 0.5em 0.3em rgba(0, 0, 0, 0.5),
+    0 1em 0.8em rgba(0, 0, 0, 0.4),
+    0 0 1.0em 0.15em var(--aura-color, transparent);
+  transform: translateY(0);
+}
+
+/* SKEUOMORPHISM ON (pressed in) */
+.dem-toggle-push.dem-toggle-skeuomorphism.dem-toggle-on {
+  box-shadow: inset 0 0.5em 0.3em rgba(0, 0, 0, 0.25),
+    inset 0 1.5em 0.8em rgba(0, 0, 0, 0.2),
+    0 -0.1em 0.1em rgba(0, 0, 0, 0.15),
+    0 0.1em 0.1em rgba(255, 255, 255, 0.1),
+    0 0 1.0em 0.15em var(--aura-color, transparent);
+  transform: translateY(0.15em) scale(0.96);
+}
+
+/* NEUMORPHISM OFF (popped out) */
+.dem-toggle-push.dem-toggle-neumorphism {
+  box-shadow: -0.35em -0.35em 0.9em 0.2em rgba(255, 255, 255, 0.04),
+    0.5em 0.5em 1em 0.2em rgba(0, 0, 0, 0.4),
+    inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.04),
+    inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.4),
+    0 0 1.0em 0.15em var(--aura-color, transparent);
+  transform: translateY(0);
+}
+
+/* NEUMORPHISM ON (pressed in) */
+.dem-toggle-push.dem-toggle-neumorphism.dem-toggle-on {
+  box-shadow: inset 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.2),
+    inset -0.25em -0.25em 0.5em rgba(255, 255, 255, 0.04),
+    -0.1em -0.1em 0.3em rgba(255, 255, 255, 0.02),
+    0.1em 0.1em 0.3em rgba(0, 0, 0, 0.1),
+    0 0 1.0em 0.15em var(--aura-color, transparent);
+  transform: translateY(0.15em) scale(0.96);
+}
+

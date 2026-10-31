@@ -1,0 +1,85 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client"
+    ],
+    "paths": {
+      "@dem-ui/icons-lucide": [
+        "./packages/icons-lucide/src/index.ts"
+      ],
+      "@dem-ui/theme-base": [
+        "./packages/theme-base/src/index.ts"
+      ],
+      "@dem-ui/themes": [
+        "./packages/themes/src/index.ts"
+      ],
+      "@dem-ui/theme-neobrutalism": [
+        "./packages/theme-neobrutalism/src/index.ts"
+      ],
+      "@dem-ui/theme-industrial": [
+        "./packages/theme-industrial/src/index.ts"
+      ],
+      "@dem-ui/theme-editorial": [
+        "./packages/theme-editorial/src/index.ts"
+      ],
+      "@dem-ui/theme-glass": [
+        "./packages/theme-glass/src/index.ts"
+      ],
+      "@dem-ui/theme-retro": [
+        "./packages/theme-retro/src/index.ts"
+      ],
+      "@dem-ui/toggle-seventies": [
+        "./packages/toggle-seventies/src/index.tsx"
+      ],
+      "@dem-ui/toggle-skeuomorphic": [
+        "./packages/toggle-skeuomorphic/src/index.tsx"
+      ],
+      "@dem-ui/toggles": [
+        "./packages/toggles/src/index.ts"
+      ],
+      "@dem-ui/flags": [
+        "./packages/flags/src/index.tsx"
+      ],
+      "@dem-ui/foundation": [
+        "./packages/foundation/src/index.ts"
+      ],
+      "@dem-ui/foundation/utils": [
+        "./packages/foundation/src/utils/index.ts"
+      ],
+      "@dem-ui/foundation/tokens": [
+        "./packages/foundation/styles/tokens.json"
+      ],
+      "@dem-ui/base": [
+        "./packages/base/src/index.ts"
+      ],
+      "@dem-ui/functional": [
+        "./packages/functional/src/index.ts"
+      ],
+      "@dem-ui/content": [
+        "./packages/content/src/index.ts"
+      ],
+      "@dem-ui/content/editors": [
+        "./packages/content/src/editors/index.tsx"
+      ],
+      "@dem-ui/ui": [
+        "./packages/ui/src/index.ts"
+      ],
+      "@dem-ui/core": [
+        "./packages/core/src/index.ts"
+      ],
+      "@dem-ui/special-effects/chrome-blob": [
+        "./packages/special-effects/src/chrome-blob.tsx"
+      ],
+      "@dem-ui/special-effects/grainient": [
+        "./packages/special-effects/src/grainient.tsx"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src",
+    "apps/storybook/src",
+    "apps/storybook/.storybook"
+  ]
+}

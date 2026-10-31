@@ -1,0 +1,95 @@
+{
+  "name": "@dem-ui/theme-retro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dem UI theme: Windows 9x bevels and title bars, bitmap fonts, pixel icons.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/theme-retro"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "fonts-alternatives.css",
+    "fonts.css",
+    "tokens.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css",
+    "./fonts-alternatives.css": "./fonts-alternatives.css"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "@fontsource/courier-prime": "^5.0.0",
+    "@fontsource/dotgothic16": "^5.0.0",
+    "@fontsource/inconsolata": "^5.0.0",
+    "@fontsource/jersey-10": "^5.0.0",
+    "@fontsource/micro-5": "^5.0.0",
+    "@fontsource/press-start-2p": "^5.0.0",
+    "@fontsource/share-tech-mono": "^5.0.0",
+    "@fontsource/silkscreen": "^5.0.0",
+    "@fontsource/tiny5": "^5.0.0",
+    "@fontsource/ubuntu-mono": "^5.0.0",
+    "@dem-ui/foundation": "^0.3.0"
+  },
+  "dependencies": {
+    "@fontsource/vt323": "^5.3.0",
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "pixelarticons": "^2.4.2",
+    "@dem-ui/theme-base": "*"
+  },
+  "devDependencies": {
+    "react": "^19.2.0",
+    "@dem-ui/foundation": "*"
+  },
+  "peerDependenciesMeta": {
+    "@fontsource/courier-prime": {
+      "optional": true
+    },
+    "@fontsource/dotgothic16": {
+      "optional": true
+    },
+    "@fontsource/inconsolata": {
+      "optional": true
+    },
+    "@fontsource/jersey-10": {
+      "optional": true
+    },
+    "@fontsource/micro-5": {
+      "optional": true
+    },
+    "@fontsource/press-start-2p": {
+      "optional": true
+    },
+    "@fontsource/share-tech-mono": {
+      "optional": true
+    },
+    "@fontsource/silkscreen": {
+      "optional": true
+    },
+    "@fontsource/tiny5": {
+      "optional": true
+    },
+    "@fontsource/ubuntu-mono": {
+      "optional": true
+    }
+  }
+}
