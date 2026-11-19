@@ -26,7 +26,11 @@ Storybook opens on http://localhost:6006 with every component, and a toolbar to 
 | `npm run build` | Builds every package |
 | `npm run build-storybook` | Builds the static Storybook |
 | `npm run typecheck` | Checks the types of the whole repository |
+| `npm test` | Runs the tests (Vitest, on the sources: no build needed) |
 | `npm run check:themes` | Checks every theme's tokens and colour contrast |
+| `npm run check:packages` | Checks what each package would publish, after `npm run build` |
+| `npm run generate:tokens` | Regenerates the token types after a change to `tokens.json` |
+| `npx changeset` | Describes a change for the changelog and the next release |
 | `npm run example` | Starts the example Next.js app, after `npm run build` |
 | `npm run example:build` | Builds the example Next.js app |
 
@@ -37,7 +41,8 @@ Needs Node 22.12 or newer. With an older global Node, `npm install` silently ski
 | Package | Contents |
 |---|---|
 | `@dem-ui/core` | The wrapper: one install for foundation, base, functional, content and ui |
-| `@dem-ui/next` | `DemProvider`, already wired to `next/link` and `next/image` |
+| `@dem-ui/next` | `DemProvider`, already wired to `next/link` and `next/image`; `/server` (`getColorMode`), `/plugin` (`withDemUI`) |
+| `@dem-ui/cli` | `npx dem-ui init`: config file, stylesheet imports, install command |
 | `@dem-ui/foundation` | Themes, tokens, `UIProvider`, `useStyles`, icon contract, `cn` |
 | `@dem-ui/base` | The HTML elements as components, plus Button, Input, Select, Switch, Badge, Card |
 | `@dem-ui/functional` | Modal, Tabs, Accordion, ConfirmModal, DeleteButton, DataTable, ImageDropzone, lists and filters, LocaleSwitch, colour pickers |
@@ -113,6 +118,52 @@ In a Server Component:
 
 For remote images, add the hosts to `images.remotePatterns` in `next.config`. With `next/font`, skip the theme's fonts and assign the variable: `--ui-font-display: var(--font-abril);`.
 
+## A config file
+
+Project settings can live in one file, as with `tailwind.config`. `npx dem-ui init` creates it, adds the stylesheet imports and prints the install command and the layout code (`--theme`, `--dry-run`, `--install`, `--force`). Or write it by hand and import it once in the layout:
+
+```ts
+// dem-ui.config.ts
+"use client"; // lets components such as icons or a router Link reach the provider
+import { defineConfig } from "@dem-ui/next"; // or "@dem-ui/core"
+import industrial from "@dem-ui/theme-industrial";
+
+export default defineConfig({
+  theme: industrial,
+  mode: "dark",
+  density: "compact",
+  fonts: { primary: "Michroma", secondary: "JetBrains Mono" }, // from the theme's fontOptions
+  tokens: { primary: "#e8590c", "radius-control": "2px" },
+  recipes: { button: { slots: { root: "tracking-widest" } } },
+  defaults: { input: { size: "md" } },
+  icons: { close: MyCloseIcon },
+  labels: { close: "Chiudi", cancel: "Annulla" },
+});
+```
+
+```tsx
+// app/layout.tsx
+import config from "../dem-ui.config";
+
+<DemProvider config={config}>{children}</DemProvider>;
+```
+
+- `UIProvider` takes the same `config`.
+- `extends: sharedConfig` starts from another config, such as a brand shared by several apps. The later one wins.
+- Props of the provider win over the config: `<DemProvider config={config} mode="light">`.
+- Fonts in `fonts` still need their CSS: import `fonts-alternatives.css` or the `@fontsource` packages you keep.
+- Token names and the theme's fonts are typed: `tokens: { primay: ... }` or a font the theme does not offer is a type error.
+- In development the console warns about a chosen font that the theme does not offer, or that no stylesheet loads.
+- The file is imported, so it works the same in Next.js, Vite and any React app. `apps/next-example/dem-ui.config.ts` is a working one.
+- In Next.js the import can go: with `withDemUI` in `next.config.mjs`, `DemProvider` loads the file by itself.
+
+  ```js
+  // next.config.mjs
+  import { withDemUI } from "@dem-ui/next/plugin";
+
+  export default withDemUI({ /* your Next config */ }); // or withDemUI(config, { config: "ui/dem.ts" })
+  ```
+
 ## Using it without Next.js
 
 Requires React 19 and Tailwind v4.
@@ -138,7 +189,8 @@ Without `Link` and `Image` it uses `<a>` and `<img>`.
 
 1. The theme, through its `extends` chain.
 2. CSS variables in the project: `[data-theme~="neobrutalism"] { --ui-primary: #ff0; }`. Theme values are in a layer, so unlayered CSS wins.
-3. `overrides` on `UIProvider`:
+3. The config file, `config` on the provider (see [A config file](#a-config-file)).
+4. `overrides` on `UIProvider`:
 
    ```tsx
    overrides={{
@@ -149,7 +201,7 @@ Without `Link` and `Image` it uses `<a>` and `<img>`.
    }}
    ```
 
-4. Props on one instance: `classNames={{ trigger: "..." }}`, `className`.
+5. Props on one instance: `classNames={{ trigger: "..." }}`, `className`.
 
 Nested providers can change theme, mode or density for part of the app. Dialogs and dropdowns are portalled to `document.body` and keep the theme of the provider they came from.
 
@@ -179,7 +231,7 @@ Each theme has its own fonts, plus `fontOptions`: 5 primary and 5 secondary alte
 ```
 
 ```tsx
-overrides={{ tokens: selectFonts(editorial, { primary: "Playfair Display", secondary: "Lora" }) }}
+overrides={{ tokens: selectFonts(editorial, { primary: "Gloock", secondary: "Lora" }) }}
 ```
 
 ## Modules
@@ -187,15 +239,24 @@ overrides={{ tokens: selectFonts(editorial, { primary: "Playfair Display", secon
 A module is an independent package that any theme can use. Toggles share one contract, `ThemeToggleProps`, so they replace each other:
 
 ```tsx
-import { useColorMode } from "@dem-ui/foundation";
+import { useThemeMode } from "@dem-ui/foundation";
 import { SeventiesToggle } from "@dem-ui/toggle-seventies";
 
-const { mode, isDark, setIsDark } = useColorMode();
-
-<UIProvider theme={theme} mode={mode}>
-  <SeventiesToggle isDark={isDark} onChange={setIsDark} brand="Acme" />
-</UIProvider>;
+// Anywhere under a provider with colorMode:
+const { isDark, setIsDark } = useThemeMode();
+<SeventiesToggle isDark={isDark} onChange={setIsDark} brand="Acme" />;
 ```
+
+With `colorMode` (a prop of the provider, or `colorMode: true` in the config) the provider owns the mode, remembers it in localStorage and in a cookie, and `useThemeMode` changes it from any child. In Next.js, read the cookie on the server so the first paint already has the right mode, with no flash:
+
+```tsx
+// app/layout.tsx
+import { getColorMode } from "@dem-ui/next/server";
+
+<DemProvider config={config} colorMode={{ defaultMode: await getColorMode() }}>{children}</DemProvider>;
+```
+
+Reading the cookie renders the route per request. Without a provider, `useColorMode()` returns the same controls for you to pass as `mode`.
 
 `SkeuomorphicToggle` and `PushButtonToggle` change look with a prop: `mode="skeuomorphism"` or `mode="neumorphism"`.
 

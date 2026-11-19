@@ -2,6 +2,7 @@ import { Badge, Button, Card, CardContent, CardHeader, Code, Container, Heading,
 import { GridHero, GridHeroPanel, ModuleRenderer, Quote } from "@dem-ui/core";
 import { cn } from "@dem-ui/core/utils";
 import { Interactive } from "./Interactive";
+import { ModeToggle } from "./ModeToggle";
 
 // A Server Component: no "use client", and everything below is rendered on the server.
 export default function Page() {
@@ -21,6 +22,7 @@ export default function Page() {
           <Link href="/second">Text link</Link>
           <Link href="https://example.com" isExternal showExternalIcon>External</Link>
           <Badge variant="success">Server</Badge>
+          <ModeToggle />
         </div>
       </Section>
 

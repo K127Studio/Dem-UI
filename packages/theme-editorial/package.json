@@ -46,11 +46,11 @@
     "@fontsource/cormorant-garamond": "^5.0.0",
     "@fontsource/dm-serif-display": "^5.0.0",
     "@fontsource/eb-garamond": "^5.0.0",
+    "@fontsource/gloock": "^5.0.0",
     "@fontsource/instrument-serif": "^5.0.0",
     "@fontsource/libre-baskerville": "^5.0.0",
     "@fontsource/lora": "^5.0.0",
     "@fontsource/newsreader": "^5.0.0",
-    "@fontsource/playfair-display": "^5.0.0",
     "@dem-ui/foundation": "^0.3.0"
   },
   "dependencies": {
@@ -81,6 +81,9 @@
     "@fontsource/eb-garamond": {
       "optional": true
     },
+    "@fontsource/gloock": {
+      "optional": true
+    },
     "@fontsource/instrument-serif": {
       "optional": true
     },
@@ -91,9 +94,6 @@
       "optional": true
     },
     "@fontsource/newsreader": {
-      "optional": true
-    },
-    "@fontsource/playfair-display": {
       "optional": true
     }
   }

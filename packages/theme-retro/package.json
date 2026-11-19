@@ -43,8 +43,8 @@
     "@fontsource/courier-prime": "^5.0.0",
     "@fontsource/dotgothic16": "^5.0.0",
     "@fontsource/inconsolata": "^5.0.0",
-    "@fontsource/jersey-10": "^5.0.0",
     "@fontsource/micro-5": "^5.0.0",
+    "@fontsource/pixelify-sans": "^5.0.0",
     "@fontsource/press-start-2p": "^5.0.0",
     "@fontsource/share-tech-mono": "^5.0.0",
     "@fontsource/silkscreen": "^5.0.0",
@@ -53,8 +53,8 @@
     "@dem-ui/foundation": "^0.3.0"
   },
   "dependencies": {
+    "@fontsource/noto-serif-nyiakeng-puachue-hmong": "^4.5.11",
     "@fontsource/vt323": "^5.3.0",
-    "@fontsource/pixelify-sans": "^5.3.0",
     "pixelarticons": "^2.4.2",
     "@dem-ui/theme-base": "*"
   },
@@ -72,10 +72,10 @@
     "@fontsource/inconsolata": {
       "optional": true
     },
-    "@fontsource/jersey-10": {
+    "@fontsource/micro-5": {
       "optional": true
     },
-    "@fontsource/micro-5": {
+    "@fontsource/pixelify-sans": {
       "optional": true
     },
     "@fontsource/press-start-2p": {

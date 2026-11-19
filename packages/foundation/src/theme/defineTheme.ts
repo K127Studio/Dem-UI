@@ -1,5 +1,6 @@
 import type { ThemeComponent, VariantValue } from "./recipes";
 import type { IconName, IconComponent } from "./icons";
+import type { Tokens } from "./tokens";
 
 /** Classes to change or add per component. They merge with what the theme chain already has. */
 export type Recipes = Partial<
@@ -30,13 +31,22 @@ export interface FontChoice {
 
 /** Fonts that suit a theme besides its own. Loaded by the theme's fonts-alternatives.css. */
 export interface FontOptions {
-  primary: FontChoice[];
-  secondary: FontChoice[];
+  primary: readonly FontChoice[];
+  secondary: readonly FontChoice[];
   /** The tokens a secondary font fills. The primary always fills `font-display`. */
-  secondaryRoles: ("body" | "interactive" | "mono")[];
+  secondaryRoles: readonly ("body" | "interactive" | "mono")[];
 }
 
-export interface ThemeDefinition {
+/** The names a list of choices accepts: each family and each label. */
+export type FontName<List extends readonly FontChoice[]> = List[number]["family"] | List[number]["label"];
+
+/** A choice among a theme's alternatives. Typed from the theme when its options are `as const`. */
+export interface FontSelection<F extends FontOptions = FontOptions> {
+  primary?: FontName<F["primary"]>;
+  secondary?: FontName<F["secondary"]>;
+}
+
+export interface ThemeDefinition<F extends FontOptions = FontOptions> {
   /** Matches the `[data-theme~="name"]` selector of the theme's tokens.css. */
   name: string;
   /** Parent theme: its tokens, recipes, defaults and icons apply unless replaced. */
@@ -47,11 +57,12 @@ export interface ThemeDefinition {
   /** Documentation of the theme's fonts, for selectors and previews. */
   fonts?: FontDeclaration[];
   /** Alternatives to choose from: pass the result of `selectFonts` to `overrides.tokens`. */
-  fontOptions?: FontOptions;
+  fontOptions?: F;
   meta?: { label?: string; description?: string; modes?: ("light" | "dark")[] };
 }
 
-export const defineTheme = (theme: ThemeDefinition): ThemeDefinition => theme;
+/** Types a theme. Its `fontOptions`, written `as const`, then type the fonts a config may pick. */
+export const defineTheme = <F extends FontOptions = FontOptions>(theme: ThemeDefinition<F>): ThemeDefinition<F> => theme;
 
 /** Oldest first, so later entries win when merged. */
 export function themeChain(theme: ThemeDefinition | undefined): ThemeDefinition[] {
@@ -63,11 +74,11 @@ export function themeChain(theme: ThemeDefinition | undefined): ThemeDefinition[
 const fontValue = (choice: FontChoice) => `"${choice.family}", ${choice.fallback}`;
 
 /** Token overrides for a choice of fonts, by family or label. Omit one to keep the theme's. */
-export function selectFonts(theme: ThemeDefinition, choice: { primary?: string; secondary?: string }): Record<string, string> {
+export function selectFonts(theme: ThemeDefinition, choice: { primary?: string; secondary?: string }): Tokens {
   const options = theme.fontOptions;
   if (!options) return {};
-  const find = (list: FontChoice[], name?: string) => list.find((font) => font.family === name || font.label === name);
-  const tokens: Record<string, string> = {};
+  const find = (list: readonly FontChoice[], name?: string) => list.find((font) => font.family === name || font.label === name);
+  const tokens: Tokens = {};
   const primary = find(options.primary, choice.primary);
   if (primary) tokens["font-display"] = fontValue(primary);
   const secondary = find(options.secondary, choice.secondary);

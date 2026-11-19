@@ -27,10 +27,22 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.js"
+    },
+    "./project-config": {
+      "types": "./dist/project-config.d.ts",
+      "import": "./dist/project-config.js"
+    },
     "./styles.css": "./styles.css"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsup"
   },
   "peerDependencies": {
     "next": ">=15.0.0",

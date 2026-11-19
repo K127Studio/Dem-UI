@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ThemeMode } from "./UIProvider";
 
 /** What every dark mode toggle receives, so they can replace each other. */
@@ -17,6 +17,31 @@ export interface UseColorModeOptions {
   defaultMode?: ThemeMode;
   /** Follows the operating system when nothing is saved. */
   followSystem?: boolean;
+  /**
+   * Also saves the choice in a cookie named like `storageKey`, so the server can render the right
+   * mode on the first paint: read it and pass it back as `defaultMode` (`getColorMode` in Next.js).
+   */
+  cookie?: boolean;
+}
+
+/** The cookie and storage key used when none is given. */
+export const COLOR_MODE_KEY = "dem-ui-mode";
+
+/** What `useColorMode` returns, and what `useThemeMode` reads from a provider that manages the mode. */
+export interface ColorModeControls {
+  mode: ThemeMode;
+  isDark: boolean;
+  setMode: (mode: ThemeMode) => void;
+  setIsDark: (isDark: boolean) => void;
+}
+
+/** Reads a saved mode from a cookie header, such as `document.cookie` or a request's. */
+export function readColorModeCookie(cookieHeader: string | null | undefined, name = COLOR_MODE_KEY): ThemeMode | undefined {
+  for (const part of cookieHeader?.split(";") ?? []) {
+    const [key, value] = part.trim().split("=");
+    if (key === name && isMode(value)) return value;
+  }
+  return undefined;
 }
 
 const isMode = (value: unknown): value is ThemeMode => value === "light" || value === "dark";
@@ -26,7 +51,7 @@ const isMode = (value: unknown): value is ThemeMode => value === "light" || valu
  * `isDark` / `setIsDark` to a toggle. The first render always uses `defaultMode`, so server
  * and client markup match; the saved choice applies right after.
  */
-export function useColorMode({ storageKey = "dem-ui-mode", defaultMode = "light", followSystem = false }: UseColorModeOptions = {}) {
+export function useColorMode({ storageKey = COLOR_MODE_KEY, defaultMode = "light", followSystem = false, cookie = false }: UseColorModeOptions = {}): ColorModeControls {
   const [mode, setModeState] = useState<ThemeMode>(defaultMode);
 
   useEffect(() => {
@@ -57,11 +82,14 @@ export function useColorMode({ storageKey = "dem-ui-mode", defaultMode = "light"
       } catch {
         // See above.
       }
+      if (cookie && typeof document !== "undefined") {
+        document.cookie = `${storageKey ?? COLOR_MODE_KEY}=${next}; path=/; max-age=31536000; samesite=lax`;
+      }
     },
-    [storageKey],
+    [storageKey, cookie],
   );
 
   const setIsDark = useCallback((isDark: boolean) => setMode(isDark ? "dark" : "light"), [setMode]);
 
-  return { mode, isDark: mode === "dark", setMode, setIsDark };
+  return useMemo(() => ({ mode, isDark: mode === "dark", setMode, setIsDark }), [mode, setMode, setIsDark]);
 }

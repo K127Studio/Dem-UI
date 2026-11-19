@@ -35,7 +35,7 @@
     --ui-shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 1px 3px rgb(0 0 0 / 0.25);
     --ui-shadow-modal: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 20px 40px rgb(0 0 0 / 0.4);
 
-    --ui-font-display: "Doto", "IBM Plex Mono", monospace;
+    --ui-font-display: "Konkhmer Sleokchher", "IBM Plex Mono", monospace;
     --ui-font-body: "IBM Plex Mono", ui-monospace, monospace;
     --ui-font-interactive: "IBM Plex Mono", ui-monospace, monospace;
     --ui-font-mono: "IBM Plex Mono", ui-monospace, monospace;

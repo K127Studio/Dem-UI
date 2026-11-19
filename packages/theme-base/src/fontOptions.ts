@@ -1,6 +1,6 @@
 import type { FontOptions } from "@dem-ui/foundation";
 
-export const fontOptions: FontOptions = {
+export const fontOptions = {
   primary: [
     { family: "Inter Variable", label: "Inter", fallback: "sans-serif", package: "@fontsource-variable/inter" },
     { family: "Manrope", label: "Manrope", fallback: "sans-serif", package: "@fontsource/manrope" },
@@ -16,4 +16,4 @@ export const fontOptions: FontOptions = {
     { family: "Lora", label: "Lora", fallback: "serif", package: "@fontsource/lora" },
   ],
   secondaryRoles: ["body", "interactive"],
-};
+} as const satisfies FontOptions;

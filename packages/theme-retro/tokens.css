@@ -36,7 +36,7 @@
     --ui-shadow-card: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
     --ui-shadow-modal: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf, 4px 4px 0 rgb(0 0 0 / 0.5);
 
-    --ui-font-display: "Pixelify Sans", "VT323", monospace;
+    --ui-font-display: "Noto Serif Nyiakeng Puachue Hmong", "VT323", serif;
     --ui-font-body: "VT323", "Courier New", monospace;
     --ui-font-interactive: "VT323", "Courier New", monospace;
     --ui-font-mono: "VT323", "Courier New", monospace;

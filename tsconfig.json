@@ -77,6 +77,15 @@
       ],
       "@dem-ui/next": [
         "./packages/next/src/index.tsx"
+      ],
+      "@dem-ui/next/server": [
+        "./packages/next/src/server.ts"
+      ],
+      "@dem-ui/next/plugin": [
+        "./packages/next/src/plugin.ts"
+      ],
+      "@dem-ui/next/project-config": [
+        "./packages/next/src/project-config.ts"
       ]
     }
   },

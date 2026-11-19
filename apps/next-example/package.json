@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next dev -p 3210",
     "build:app": "next build",
-    "start": "next start -p 3210"
+    "start": "next start -p 3210",
+    "build:webpack": "next build --webpack"
   },
   "dependencies": {
     "@dem-ui/core": "*",

@@ -1,10 +1,10 @@
 import type { FontOptions } from "@dem-ui/foundation";
 
-export const fontOptions: FontOptions = {
+export const fontOptions = {
   primary: [
     { family: "Press Start 2P", label: "Press Start 2P", fallback: "monospace", package: "@fontsource/press-start-2p" },
     { family: "Silkscreen", label: "Silkscreen", fallback: "monospace", package: "@fontsource/silkscreen" },
-    { family: "Jersey 10", label: "Jersey 10", fallback: "monospace", package: "@fontsource/jersey-10" },
+    { family: "Pixelify Sans", label: "Pixelify Sans", fallback: "monospace", package: "@fontsource/pixelify-sans" },
     { family: "Tiny5", label: "Tiny5", fallback: "monospace", package: "@fontsource/tiny5" },
     { family: "Micro 5", label: "Micro 5", fallback: "monospace", package: "@fontsource/micro-5" },
   ],
@@ -16,4 +16,4 @@ export const fontOptions: FontOptions = {
     { family: "Share Tech Mono", label: "Share Tech Mono", fallback: "monospace", package: "@fontsource/share-tech-mono" },
   ],
   secondaryRoles: ["body", "interactive", "mono"],
-};
+} as const satisfies FontOptions;
