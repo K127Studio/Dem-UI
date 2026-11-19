@@ -68,8 +68,8 @@ export default defineTheme({
   icons: createLucideIcons({ strokeWidth: 1.5, strokeLinecap: "square", strokeLinejoin: "miter" }),
   fontOptions,
   fonts: [
-    { family: "Doto", roles: ["display"] },
+    { family: "Konkhmer Sleokchher", roles: ["display"] },
     { family: "IBM Plex Mono", roles: ["body", "interactive", "mono"] },
   ],
-  meta: { label: "Industrial", description: "Anodised panels, silk-screened labels, dot-matrix headings.", modes: ["light", "dark"] },
+  meta: { label: "Industrial", description: "Anodised panels, silk-screened labels, heavy display headings.", modes: ["light", "dark"] },
 });

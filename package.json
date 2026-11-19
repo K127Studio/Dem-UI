@@ -38,6 +38,7 @@
     "packages/toggle-skeuomorphic",
     "packages/toggles",
     "packages/special-effects",
+    "packages/cli",
     "apps/storybook",
     "apps/next-example"
   ],
@@ -48,13 +49,23 @@
     "typecheck": "tsc --noEmit",
     "check:themes": "node scripts/check-themes.mjs",
     "example": "npm run dev -w @dem-ui/next-example",
-    "example:build": "npm run build:app -w @dem-ui/next-example"
+    "example:build": "npm run build:app -w @dem-ui/next-example",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:tokens": "node scripts/generate-tokens.mjs",
+    "check:packages": "node scripts/check-packages.mjs",
+    "changeset": "changeset",
+    "example:build:webpack": "npm run build:webpack -w @dem-ui/next-example"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "es-module-lexer": "^2.3.2",
     "node": "^22.14.0",
+    "publint": "^0.3.25",
     "tsup": "^8.5.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.1"
   }
 }

@@ -54,7 +54,7 @@
     "./styles.css": "./styles.css"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup && node ../../scripts/expand-export-star.mjs ."
   },
   "peerDependencies": {
     "react": "^19.0.0",

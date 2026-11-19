@@ -1,0 +1,36 @@
+{
+  "name": "@dem-ui/cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sets Dem UI up in a project: config file, stylesheet imports and the packages to install.",
+  "author": "K127Studio <K127Studio@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/K127Studio/Dem-UI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K127Studio/Dem-UI.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/K127Studio/Dem-UI/issues"
+  },
+  "type": "module",
+  "bin": {
+    "dem-ui": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

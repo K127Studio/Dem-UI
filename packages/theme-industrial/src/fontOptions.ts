@@ -1,6 +1,6 @@
 import type { FontOptions } from "@dem-ui/foundation";
 
-export const fontOptions: FontOptions = {
+export const fontOptions = {
   primary: [
     { family: "DotGothic16", label: "DotGothic16", fallback: "monospace", package: "@fontsource/dotgothic16" },
     { family: "Major Mono Display", label: "Major Mono Display", fallback: "monospace", package: "@fontsource/major-mono-display" },
@@ -16,4 +16,4 @@ export const fontOptions: FontOptions = {
     { family: "Fira Code", label: "Fira Code", fallback: "monospace", package: "@fontsource/fira-code" },
   ],
   secondaryRoles: ["body", "interactive", "mono"],
-};
+} as const satisfies FontOptions;

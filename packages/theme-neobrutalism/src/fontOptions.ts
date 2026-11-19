@@ -1,6 +1,6 @@
 import type { FontOptions } from "@dem-ui/foundation";
 
-export const fontOptions: FontOptions = {
+export const fontOptions = {
   primary: [
     { family: "Archivo Black", label: "Archivo Black", fallback: "sans-serif", package: "@fontsource/archivo-black" },
     { family: "Bricolage Grotesque Variable", label: "Bricolage Grotesque", fallback: "sans-serif", package: "@fontsource-variable/bricolage-grotesque" },
@@ -16,4 +16,4 @@ export const fontOptions: FontOptions = {
     { family: "Rubik", label: "Rubik", fallback: "sans-serif", package: "@fontsource/rubik" },
   ],
   secondaryRoles: ["body"],
-};
+} as const satisfies FontOptions;

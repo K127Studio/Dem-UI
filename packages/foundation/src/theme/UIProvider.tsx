@@ -1,9 +1,13 @@
-import { createContext, useContext, useMemo, type CSSProperties, type ElementType, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, type CSSProperties, type ElementType, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import type { ClassValue } from "clsx";
 import { cn } from "../utils/cn";
-import { themeChain, type ComponentDefaults, type Recipes, type ThemeDefinition } from "./defineTheme";
+import { useColorMode, type ColorModeControls, type UseColorModeOptions } from "./colorMode";
+import { resolveConfig, type DemConfig } from "./defineConfig";
+import { checkFontNames, checkFontsLoaded, isDev, warnOnce } from "./devWarnings";
+import { selectFonts, themeChain, type ComponentDefaults, type Recipes, type ThemeDefinition } from "./defineTheme";
 import type { IconComponent, IconName } from "./icons";
+import type { Tokens } from "./tokens";
 import { coreRecipes, type ComponentTheme, type RecipeSet, type ThemeComponent, type VariantValue } from "./recipes";
 
 function mergeValue(base: VariantValue | undefined, over: VariantValue): VariantValue {
@@ -133,6 +137,8 @@ interface UIContextValue {
   Image: ElementType;
   /** Copied onto every portal: a dialog in document.body still needs the tokens. */
   scope: ScopeAttributes;
+  /** Set by the nearest provider that manages the colour mode. */
+  colorMode?: ColorModeControls;
 }
 
 const UIContext = createContext<UIContextValue>({
@@ -147,7 +153,7 @@ const UIContext = createContext<UIContextValue>({
 
 export interface ThemeOverrides {
   /** Token values without the prefix: `{ primary: "#924044", "radius-control": "4px" }`. */
-  tokens?: Record<string, string>;
+  tokens?: Tokens;
   recipes?: Recipes;
   defaults?: ComponentDefaults;
   icons?: Partial<Record<IconName, IconComponent>>;
@@ -159,7 +165,17 @@ export interface UIProviderProps {
   theme?: ThemeDefinition;
   mode?: ThemeMode;
   density?: ThemeDensity;
-  /** Project-level changes on top of the theme. */
+  /**
+   * Lets the provider own the colour mode: it remembers the choice (localStorage and a cookie) and
+   * `useThemeMode()` reads and changes it from any child, such as a toggle. A `mode` prop still wins.
+   */
+  colorMode?: boolean | UseColorModeOptions;
+  /**
+   * Project settings, usually the default export of `dem-ui.config.ts`. A list merges in order,
+   * later entries winning. The other props of the provider win over it.
+   */
+  config?: DemConfig | readonly (DemConfig | undefined)[];
+  /** Project-level changes on top of the theme and the config. */
   overrides?: ThemeOverrides;
   /**
    * The provider's element is the page: it paints the theme's background and texture. Needed when
@@ -174,19 +190,46 @@ export interface UIProviderProps {
   Image?: ElementType;
 }
 
-const tokenStyle = (tokens: Record<string, string>) =>
+const tokenStyle = (tokens: Tokens) =>
   Object.fromEntries(Object.entries(tokens).map(([name, value]) => [`--ui-${name}`, value])) as CSSProperties;
 
-export function UIProvider({ children, theme, mode, density, overrides, isPage = false, labels, Link, Image }: UIProviderProps) {
+export function UIProvider({ children, config, overrides, isPage = false, ...props }: UIProviderProps) {
   const parent = useContext(UIContext);
+  const settings = useMemo(() => resolveConfig(config), [config]);
+  const theme = props.theme ?? settings.theme;
+  const colorModeSetting = props.colorMode ?? settings.colorMode;
+  const managed = Boolean(colorModeSetting);
+  const colorModeOptions: UseColorModeOptions = typeof colorModeSetting === "object" ? colorModeSetting : {};
+  // Always called, as hooks must be; without a setting it stores nothing and reads nothing.
+  const controls = useColorMode(
+    managed
+      ? { cookie: true, ...colorModeOptions, defaultMode: colorModeOptions.defaultMode ?? settings.mode }
+      : { storageKey: null, defaultMode: settings.mode },
+  );
+  const mode = props.mode ?? (managed ? controls.mode : settings.mode);
+  const density = props.density ?? settings.density;
+  const labels = useMemo(
+    () => (settings.labels || props.labels ? { ...settings.labels, ...props.labels } : undefined),
+    [settings.labels, props.labels],
+  );
+  const Link = props.Link ?? settings.Link;
+  const Image = props.Image ?? settings.Image;
+
+  useEffect(() => {
+    if (!isDev() || !(settings.fonts.primary || settings.fonts.secondary)) return;
+    if (theme) checkFontsLoaded(checkFontNames(theme, settings.fonts));
+    else warnOnce("`fonts` is set but this provider has no theme to take them from. Set `theme` in the same config or provider.");
+  }, [theme, settings.fonts]);
 
   const value = useMemo<UIContextValue>(() => {
     const chain = themeChain(theme);
+    // Fonts are looked up in the theme of this provider: an inherited theme has no options here.
+    const fontTokens = theme ? selectFonts(theme, settings.fonts) : {};
     // A new theme starts from the core again, so a nested provider does not inherit the outer brand.
     let recipes = theme ? coreRecipes : parent.recipes;
     let defaults = theme ? {} : parent.defaults;
     let icons = theme ? {} : parent.icons;
-    const layers = [...chain, ...(overrides ? [overrides] : [])];
+    const layers = [...chain, ...settings.layers, ...(overrides ? [overrides] : [])];
     for (const layer of layers) {
       if (layer.recipes) recipes = mergeRecipes(recipes, layer.recipes);
       if (layer.defaults) {
@@ -203,7 +246,8 @@ export function UIProvider({ children, theme, mode, density, overrides, isPage =
     if (theme) scope["data-theme"] = [...chain].reverse().map((t) => t.name).join(" ");
     if (mode) scope["data-mode"] = mode;
     if (density) scope["data-density"] = density;
-    if (overrides?.tokens) scope.style = { ...parent.scope.style, ...tokenStyle(overrides.tokens) };
+    const tokens = Object.assign({}, fontTokens, ...settings.layers.map((layer) => layer.tokens), overrides?.tokens);
+    if (Object.keys(tokens).length) scope.style = { ...parent.scope.style, ...tokenStyle(tokens) };
 
     return {
       recipes,
@@ -213,10 +257,11 @@ export function UIProvider({ children, theme, mode, density, overrides, isPage =
       labels: labels ? { ...parent.labels, ...labels } : parent.labels,
       Link: Link ?? parent.Link,
       Image: Image ?? parent.Image,
+      colorMode: managed ? controls : parent.colorMode,
     };
-  }, [parent, theme, mode, density, overrides, labels, Link, Image]);
+  }, [parent, settings, theme, mode, density, overrides, labels, Link, Image, managed, controls]);
 
-  const needsScope = theme || mode || density || overrides?.tokens;
+  const needsScope = theme || mode || density || value.scope.style !== parent.scope.style;
   return (
     <UIContext.Provider value={value}>
       {needsScope ? (
@@ -231,6 +276,16 @@ export function UIProvider({ children, theme, mode, density, overrides, isPage =
 }
 
 export const useUI = () => useContext(UIContext);
+
+/**
+ * The colour mode of the nearest provider with `colorMode`, to read and change it from a toggle:
+ * `const { isDark, setIsDark } = useThemeMode();`.
+ */
+export function useThemeMode(): ColorModeControls {
+  const controls = useContext(UIContext).colorMode;
+  if (!controls) throw new Error("useThemeMode needs a UIProvider or DemProvider with the colorMode prop, or colorMode in its config.");
+  return controls;
+}
 
 /** Renders in document.body while keeping the active theme, mode, density and token overrides. */
 export function ThemedPortal({ children }: { children: ReactNode }) {

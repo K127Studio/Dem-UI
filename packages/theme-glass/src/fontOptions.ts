@@ -1,6 +1,6 @@
 import type { FontOptions } from "@dem-ui/foundation";
 
-export const fontOptions: FontOptions = {
+export const fontOptions = {
   primary: [
     { family: "Geist Sans", label: "Geist Sans", fallback: "sans-serif", package: "@fontsource/geist-sans" },
     { family: "Manrope", label: "Manrope", fallback: "sans-serif", package: "@fontsource/manrope" },
@@ -16,4 +16,4 @@ export const fontOptions: FontOptions = {
     { family: "Nunito", label: "Nunito", fallback: "sans-serif", package: "@fontsource/nunito" },
   ],
   secondaryRoles: ["body", "interactive"],
-};
+} as const satisfies FontOptions;

@@ -112,7 +112,7 @@ export default defineTheme({
   icons: retroIcons,
   fontOptions,
   fonts: [
-    { family: "Pixelify Sans", roles: ["display"] },
+    { family: "Noto Serif Nyiakeng Puachue Hmong", roles: ["display"] },
     { family: "VT323", roles: ["body", "interactive", "mono"] },
   ],
   meta: { label: "Retro Web", description: "Windows 9x bevels and title bars, bitmap fonts, dithered desktop, pixel icons.", modes: ["light", "dark"] },
