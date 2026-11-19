@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/icons-lucide",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Lucide icon set for Dem UI, with a stroke each theme can change.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -33,7 +33,7 @@
   "peerDependencies": {
     "react": "^19.0.0",
     "lucide-react": ">=0.544.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "devDependencies": {
     "react": "^19.2.0",

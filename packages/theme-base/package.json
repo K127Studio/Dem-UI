@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/theme-base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Dem UI theme: neutral starting point on the Tailwind palette.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -49,7 +49,7 @@
     "@fontsource/public-sans": "^5.0.0",
     "@fontsource/rubik": "^5.0.0",
     "@fontsource/work-sans": "^5.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "dependencies": {
     "@dem-ui/icons-lucide": "*"

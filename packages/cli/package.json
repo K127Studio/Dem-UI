@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Sets Dem UI up in a project: config file, stylesheet imports and the packages to install.",
   "author": "K127Studio <K127Studio@gmail.com>",

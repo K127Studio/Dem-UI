@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/toggle-skeuomorphic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Skeuomorphic and neumorphic dark mode switch and push button.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "devDependencies": {
     "react": "^19.2.0",

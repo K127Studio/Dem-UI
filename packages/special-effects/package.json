@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/special-effects",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "WebGL effects and heroes. Each entry needs only its own renderer: three or ogl.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -40,7 +40,7 @@
     "react": "^19.0.0",
     "three": ">=0.170.0",
     "ogl": "^1.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "peerDependenciesMeta": {
     "three": {

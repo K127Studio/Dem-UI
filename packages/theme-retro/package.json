@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/theme-retro",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Dem UI theme: Windows 9x bevels and title bars, bitmap fonts, pixel icons.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -50,7 +50,7 @@
     "@fontsource/silkscreen": "^5.0.0",
     "@fontsource/tiny5": "^5.0.0",
     "@fontsource/ubuntu-mono": "^5.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "dependencies": {
     "@fontsource/noto-serif-nyiakeng-puachue-hmong": "^4.5.11",

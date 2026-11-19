@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/theme-neobrutalism",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Dem UI theme: thick black borders, hard shadows, acid colours, buttons that press.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -51,7 +51,7 @@
     "@fontsource/syne": "^5.0.0",
     "@fontsource/unbounded": "^5.0.0",
     "@fontsource/work-sans": "^5.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "dependencies": {
     "@fontsource/space-grotesk": "^5.3.0",

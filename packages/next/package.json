@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/next",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Dem UI for Next.js: a provider already wired to next/link and next/image.",
   "author": "K127Studio <K127Studio@gmail.com>",

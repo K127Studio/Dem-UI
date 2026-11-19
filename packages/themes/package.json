@@ -1,6 +1,6 @@
 {
   "name": "@dem-ui/themes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Every Dem UI theme in one package.",
   "author": "K127Studio <K127Studio@gmail.com>",
@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "@dem-ui/foundation": "^0.3.0"
+    "@dem-ui/foundation": "^0.4.0"
   },
   "dependencies": {
     "@dem-ui/theme-base": "*",
